@@ -28,3 +28,10 @@ timeline vs. broadcast/GEOINT/visual-intelligence/infrastructure analysis.
 It may display additional, visually-designed entries beyond Version 1's
 scope as locked/"Coming Soon" placeholders — inert UI only, with no
 navigation, assets, or content behind them.
+
+012 The Lane's distant signage reads "HACK METH" (not "RED TEAM OPS").
+This overrides the wording in docs/OSINT_Hotel_Scrollytelling_Brief.md,
+which is left as-authored for historical record. HACK METH prevails
+because it matches the Asset Register (C005, EN002) and existing
+concept art; it still names/teases the next module's destination and
+is never entered in this build.

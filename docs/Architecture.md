@@ -219,7 +219,7 @@ Four cooperating, dependency-free JS modules (namespaced globals, no bundler req
 | Module | Responsibility |
 |---|---|
 | `PC.state` | Holds key-wall state (§5.2) and current scene pointer in memory; exposes get/set + a tiny pub-sub for the other modules to react to state changes. No `localStorage`/`sessionStorage` dependency required by the spec (session-lifetime only), though using it is not precluded — flagged as an implementation choice for Milestone 3, not a constraint here. |
-| `PC.linearEngine` | Drives Scenes 0–4 and 8–10: listens to scroll position, maps it to scene/sub-stage progress (e.g., Red Team Ops sign scale), triggers enter/exit transitions from the scene manifest. |
+| `PC.linearEngine` | Drives Scenes 0–4 and 8–10: listens to scroll position, maps it to scene/sub-stage progress (e.g., HACK METH sign scale), triggers enter/exit transitions from the scene manifest. |
 | `PC.hubEngine` | Drives Scenes 5–7: renders the Mission Board from `keywall-state` plus the static locked-placeholder list, handles key clicks → room transitions, renders narrative-room content or the terminal-room + Pause-for-Demo component, provides the explicit "back to hub" control (FR-13), and evaluates the FR-14 auto-check-out condition. |
 | `PC.audio` | Thin wrapper over `<audio>` elements for ambient loops; exposes mute toggle; never throws if playback is blocked (NFR-6). |
 

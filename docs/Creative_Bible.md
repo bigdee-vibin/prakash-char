@@ -12,7 +12,7 @@
 
 **Prakāśa-chara** (प्रकाशचर) — "moving/existing in the light," i.e. **in plain sight**. The title states the thesis of the entire session: nothing in these case studies required a breach. It required only looking at what was already visible, and having the discipline to look properly.
 
-**One-line concept** (from the brief): the trainee peers over the shoulder of an operator at a bank of monitors, gets pulled into the central screen, walks a neon backstreet toward a distant "RED TEAM OPS" sign — but detours into the **OSINT Hotel**, where a key wall unlocks topics as rooms, and some doors don't open into a room at all — they open onto a real terminal, the cue to break from the story and run the actual demo.
+**One-line concept** (from the brief, signage updated per DECISIONS.md #012): the trainee peers over the shoulder of an operator at a bank of monitors, gets pulled into the central screen, walks a neon backstreet toward a distant "HACK METH" sign — but detours into the **OSINT Hotel**, where a key wall unlocks topics as rooms, and some doors don't open into a room at all — they open onto a real terminal, the cue to break from the story and run the actual demo.
 
 ## 2. World & Tone
 
@@ -53,7 +53,7 @@ Any body text pulled into a room from `OSINT SE Session.pptx` must be traceable 
 |---|---|
 | OSINT Hotel | The hub building; reception houses the Mission Board |
 | Mission Board | The hub navigation surface (formerly "Key Wall" in early concept art — renamed per DECISIONS.md #011). UI copy reads "Available Intelligence Missions," not "Select a Room." |
-| Red Team Ops | The distant sign on the Lane; destination of the *next* module (IW/HAK/15.4), never entered in this build |
+| HACK METH | The distant sign on the Lane (canonical name per DECISIONS.md #012, supersedes the brief's "RED TEAM OPS"); destination of the *next* module (IW/HAK/15.4), never entered in this build |
 | The Lane | The Tokyo-backstreet connective scene (Scenes 3, 9) |
 | The Bridge | SE Bridge room (Scene 6e) — also a thematic pun (see Themes §5.4) |
 | Apex Dynamics | The decoy training org used in the live demo segments (SET/GoPhish/Exercise) — referenced only in demo-pause handoff text, never built out as in-browser content, since it belongs to the live/air-gapped world |
@@ -62,7 +62,7 @@ Any body text pulled into a room from `OSINT SE Session.pptx` must be traceable 
 Early concept art for the hub depicted ~20 keys, far beyond Version 1's 9 rooms (5 narrative + 4 terminal). That art was exploratory — meant to make the room feel like a real intelligence facility and suggest future depth, not to redefine the syllabus. The resolution: the extra entries (Threat Intelligence, Dark Web & Leaks, GEOINT Suite, Imagery & Metadata, OPSEC & Privacy, Report & Attribution, Archive Vault, and similar) may still appear on the Mission Board **as locked, inert placeholders** — a "Coming Soon" or "Available in a future mission" treatment, exactly like a game campaign screen — with no click handler, no room, no content behind them (SRS FR-8a). This gives the room its intended visual richness without expanding what Version 1 actually teaches.
 
 ## 8. Continuity to IW/HAK/15.4
-The entire piece is structured as a first chapter, not a standalone story: the Red Team Ops sign is visible from Scene 3 onward and never entered; the Cliffhanger Close names the next module explicitly; the SE Bridge room's "recon becomes pretext" framing is the direct conceptual handoff (source slide 19: "This is the direct link into IW/HAK/15.4"). Any future module built for IW/HAK/15.4 should be treated as free to open on "arriving at the Red Team Ops door," picking up exactly where this build stops.
+The entire piece is structured as a first chapter, not a standalone story: the HACK METH sign is visible from Scene 3 onward and never entered; the Cliffhanger Close names the next module explicitly; the SE Bridge room's "recon becomes pretext" framing is the direct conceptual handoff (source slide 19: "This is the direct link into IW/HAK/15.4"). Any future module built for IW/HAK/15.4 should be treated as free to open on "arriving at the HACK METH door," picking up exactly where this build stops.
 
 ## 9. What This Experience Is Not
 - Not a game with failure states, scoring, or branching narrative outcomes — the Mission Board is a navigation menu with a visited/unvisited state (plus inert locked placeholders, §7.1), not a puzzle with a wrong answer.

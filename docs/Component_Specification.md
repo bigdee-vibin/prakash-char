@@ -22,7 +22,7 @@ Each component below is a specification for Milestone 3 implementation — no co
 **Data:** ordered list of `linear-scene` entries from the scene manifest.
 **Behavior:**
 - Maps scroll position within a scene's allotted scroll range to a 0–1 progress value.
-- Applies progress to: Monitor Wall pan (Scene 1), zoom-in transform (Scene 2), forward-motion + Red Team Ops sign scale (Scenes 3, 9), turn/rotate transform (Scene 4).
+- Applies progress to: Monitor Wall pan (Scene 1), zoom-in transform (Scene 2), forward-motion + HACK METH sign scale (Scenes 3, 9), turn/rotate transform (Scene 4).
 - Emits a `scene:complete` event to `PC.state` when a scene's scroll range is exhausted, advancing to the next scene.
 **States:** per-scene `progress: 0..1`.
 **Reduced motion:** when `prefers-reduced-motion` is set, progress still advances on scroll but transform intensity is capped (UI Style Guide §4) — discrete step rather than continuous scale/rotate.

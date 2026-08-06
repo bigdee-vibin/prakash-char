@@ -60,7 +60,7 @@ Mission Board rooms (Foundations through GoPhish) are non-linear/click-order-fre
 ### Scene 2 — Cyber Lane
 - **Type:** linear-scene · **Interaction:** scroll = walking forward (SRS FR-4)
 - **Visual:** Tron-style neon grid floor, rain-slicked reflective ground, Tokyo-backstreet signage. Far down the lane: the distant sign that grows almost imperceptibly with each scroll stage.
-- **Asset:** `C001` Cyber Lane (To Generate, High priority); distant-sign detail per `C005` (see §3.2 naming flag).
+- **Asset:** `C001` Cyber Lane (To Generate, High priority); distant "HACK METH" signage per `C005` (naming resolved §3.2, DECISIONS.md #012).
 - **Audio:** `AU001` Rain (To Source, High priority).
 - **Note:** sets up the next module as "where this is headed" (brief), never entered in Version 1.
 
@@ -168,7 +168,7 @@ Mission Board rooms (Foundations through GoPhish) are non-linear/click-order-fre
 ### Scene 8 — Ending (Lane Return → Cliffhanger)
 - **Type:** linear-scene · **Interaction:** final scroll stretch (SRS FR-6–7)
 - **Visual:** back on the Lane, distant sign now closer/brighter; camera stops just short of its door; text overlay: *"To be continued in IW/HAK/15.4 — Gaining Access."* Fade to black.
-- **Assets:** `EN001` Lane Return, `EN002` "HACK METH Reveal" (see §3.2 naming flag).
+- **Assets:** `EN001` Lane Return, `EN002` "HACK METH Reveal" (naming resolved §3.2, DECISIONS.md #012).
 - **Deliberately non-terminal** per Creative Bible §5.5 and §8 — no resolution.
 
 ---
@@ -183,8 +183,8 @@ The original brief describes a single Scene 0 ("Cold Open — dark ops room, sil
 ### 3.1 Easter Egg Wall assets missing from the register
 The four peripheral-monitor loops (Python, Networking, PowerShell, Bash — brief §"Easter Egg Wall") have no corresponding Asset Register rows. Needs 4 new rows (or one combined asset) added at Milestone 2.
 
-### 3.2 "RED TEAM OPS" vs. "HACK METH" signage — naming conflict
-The written brief consistently names the Lane's distant signage **"RED TEAM OPS"** (the destination sign, tied to IW/HAK/15.4 — "Gaining Access"). The Asset Register (`C005` "HACK METH — Future module exterior", `EN002` "HACK METH Reveal") and prior exploratory concept art both use **"HACK METH"** instead. These are two different labels for what should be the same in-world sign. Per the scope-authority decision (DECISIONS.md #008, brief text is authoritative for instructional content), this Scene Bible does **not** silently pick one — this is a naming decision for you to confirm before Milestone 2 asset generation, since it determines what text gets baked into generated signage art (expensive to redo).
+### 3.2 "RED TEAM OPS" vs. "HACK METH" signage — RESOLVED 2026-08-06
+**HACK METH prevails** (DECISIONS.md #012). The written brief's "RED TEAM OPS" wording is superseded; `docs/OSINT_Hotel_Scrollytelling_Brief.md` itself is left unedited as the historical/as-authored record, but every other spec document and all future asset generation use "HACK METH," matching the Asset Register (`C005`, `EN002`) and existing concept art. The sign still names/teases the next module's destination (IW/HAK/15.4) and is never entered in this build — only the label text changed.
 
 ### 3.3 "Mission Brief" scene — asset and content ambiguity
 `EX001` ("Mission Control") and `EX002` ("Apex Dossier") are registered under category "Exercise," which — per SRS §6.1 — maps to Segment 8 (the air-gapped exercise, explicitly out of scope for the web build; live/air-gapped only). The new "Mission Brief" scene in the frozen order has no clear source slide or confirmed asset. Needs a decision: reuse `EX001` for this narrative beat (renaming its register purpose), or register a new asset, or fold "Mission Brief" content into the adjacent Decision/Debrief scenes instead of standing alone.

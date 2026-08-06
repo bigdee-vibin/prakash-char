@@ -18,7 +18,7 @@ This guide translates the brief's "Design Language" section into concrete, build
 | `--pc-bg-raised` | `#12141A` | Panels, room-interior surfaces, card backgrounds |
 | `--pc-grid-cyan` | `#26E5FF` | Grid lines, structural UI (Lane floor grid, Mission Log HUD borders) |
 | `--pc-grid-cyan-dim` | `#0F5C66` | Grid lines at low-emphasis / unlit states |
-| `--pc-neon-magenta` | `#FF2FB0` | Signage — "OSINT HOTEL," "RED TEAM OPS," key-wall lit state |
+| `--pc-neon-magenta` | `#FF2FB0` | Signage — "OSINT HOTEL," "HACK METH," key-wall lit state |
 | `--pc-amber` | `#FFB020` | Interactive/clickable elements — matches the source deck's orange tag colour (continuity thread per brief) |
 | `--pc-amber-dim` | `#7A5511` | Disabled/locked interactive elements (e.g. an unvisited key before hover) |
 | `--pc-text-primary` | `#EAF6F8` | Body copy on dark backgrounds |
@@ -45,7 +45,7 @@ This guide translates the brief's "Design Language" section into concrete, build
 - **Scenes 0–4 and 8–10 (linear walk):** strictly scroll-linked, never autoplay — motion progress is a direct function of scroll position (SRS FR-2–FR-6). No easing that continues animating after scroll input stops.
 - **Scenes 5–7 (hub/rooms):** click-driven, not scroll-driven. The shift in interaction model must be *felt*: on entering the Mission Board, the cursor should change (e.g., to a hand/pointer with a subtle glow) and a brief, one-time UI cue (e.g., a soft pulse across the unlit keys) should signal "you are now choosing," per the brief's explicit instruction. Locked/future-expansion placeholders (Creative Bible §7.1) do not participate in this cue — they read as inert from the start.
 - **Transitions between modes** (Scene 4's "turn" into the hotel, Scene 9's return to the lane) get a distinct, slightly longer transition (600–900ms proposed) than in-room transitions (200–350ms proposed) to mark the mode shift.
-- **`prefers-reduced-motion` (NFR-7):** when set, disable the zoom/rotate camera-move transitions (Scenes 2, 4) in favor of a simple cross-fade, and reduce the Red Team Ops sign's growth animation to a single discrete state change rather than continuous scaling.
+- **`prefers-reduced-motion` (NFR-7):** when set, disable the zoom/rotate camera-move transitions (Scenes 2, 4) in favor of a simple cross-fade, and reduce the HACK METH sign's growth animation to a single discrete state change rather than continuous scaling.
 
 ## 5. Iconography
 No bespoke icon set is specified by the brief. Where UI chrome needs icons (mute toggle, back-to-hub control, key-wall lock/unlit/lit indicator), use simple geometric line-art consistent with the grid/neon palette (stroke in `--pc-grid-cyan` or `--pc-amber` depending on interactive state) rather than a filled/skeuomorphic icon style. Defer final icon set to Milestone 3 (Component Specification defines *behavior*; icon artwork itself is an asset-generation task, Milestone 2).

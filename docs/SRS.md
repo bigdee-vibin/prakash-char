@@ -76,9 +76,9 @@ A standalone artifact, not a service. It has no backend, no network calls at run
 - **FR-1** The experience SHALL open on a static "Cold Open" beat (Scene 0) that holds before any scroll input, establishing mood, followed by an "Operations Centre" beat (Scene 0b) establishing the SOC environment before the Monitor Wall — per the frozen Scene Bible order (2026-08-06 decision) and Asset Register row B001.
 - **FR-2** Scrolling SHALL pan across the Monitor Wall (Scene 1) at a rate proportional to scroll delta, not autoplay.
 - **FR-3** Continued scroll SHALL trigger a zoom transition (Scene 2 — "The Pull") into the central monitor, dimming/fading the surrounding room.
-- **FR-4** Scroll SHALL then drive forward motion down "The Lane" (Scene 3), with the "RED TEAM OPS" signage growing larger by a small, deliberate increment at each scroll stage.
+- **FR-4** Scroll SHALL then drive forward motion down "The Lane" (Scene 3), with the "HACK METH" signage growing larger by a small, deliberate increment at each scroll stage (DECISIONS.md #012 — supersedes the brief's "RED TEAM OPS" wording).
 - **FR-5** A scroll or click prompt at the OSINT Hotel building SHALL trigger a camera-rotation transition (Scene 4) into the hub (Scene 5 — Reception/Mission Board).
-- **FR-6** After Check-out (§3.3), continued interaction SHALL return the trainee to the Lane (Scene 9) with the Red Team Ops sign now visually closer/brighter than in Scene 3.
+- **FR-6** After Check-out (§3.3), continued interaction SHALL return the trainee to the Lane (Scene 9) with the HACK METH sign now visually closer/brighter than in Scene 3.
 - **FR-7** The experience SHALL end on a fixed Cliffhanger Close (Scene 10) with a text overlay referencing "IW/HAK/15.4 — Gaining Access" and SHALL NOT resolve further — this ending is deliberately non-terminal.
 
 ### 3.2 Mission Board Hub (Scene 5) and Rooms (Scenes 6a–6e, 7a–7d)

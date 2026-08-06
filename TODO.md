@@ -22,8 +22,8 @@
 - [x] Resolved: Decision Dilemma (slide 26) and Debrief (slide 27) placed as their own scenes, with a new Mission Brief scene between them
 
 ### Open decisions before Milestone 2 (see SRS §8.2, Scene Bible §3)
+- [x] "RED TEAM OPS" (brief) vs. "HACK METH" (Asset Register / concept art) — **resolved 2026-08-06: HACK METH prevails** (DECISIONS.md #012)
 - [ ] Slide 13 ("Where AI Fits In OSINT Now") placement — no scene assigned yet
-- [ ] "RED TEAM OPS" (brief) vs. "HACK METH" (Asset Register / concept art) — signage naming conflict, needs one canonical name before generating Lane/Ending signage art
 - [ ] "Mission Brief" scene — confirm whether `EX001`/`EX002` (currently registered under out-of-scope "Exercise"/Segment 8) are repurposed, or new assets are registered
 - [ ] Easter Egg Wall assets (Python/Networking/PowerShell/Bash monitor loops) — not yet rows in the Asset Register
 - [ ] Minimum hardware spec (training-room baseline) — needed for performance/size budgets
