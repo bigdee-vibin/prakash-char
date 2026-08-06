@@ -36,7 +36,7 @@
 - [x] 4/22 generated and placed: A001, A002, B003, SB001 → `assets/images/*.webp`
 - [ ] 18/22 pending — prompts handed off as [prompts/remaining_18_prompts.md](prompts/remaining_18_prompts.md) (zipped, sent 2026-08-06); waiting on generated images to be returned
 - [ ] Remaining Easter Egg Wall assets (EE001-EE004, HTML/CSS) — build-time, not image-generated, deferred to Milestone 3
-- [ ] Source 2 CC0 audio loops (rain.ogg, ops.ogg) — not started; downloading external files needs explicit go-ahead per file (source/size) when we get to it
+- [x] Source 2 CC0 audio loops — done 2026-08-06 (DECISIONS.md #024): `assets/audio/rain.ogg` (freesound.org/s/242889, CC0, 48s) and `assets/audio/ops.ogg` (freesound.org/s/715475, CC0, 1:42)
 
 ## M3 — HTML engine build
 - [ ] Implement schemas as `schemas/*.schema.json` (drafted in Architecture.md §5)

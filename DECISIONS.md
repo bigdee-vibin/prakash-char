@@ -149,3 +149,16 @@ keys) is left in place but unused — no code deleted, in case a hybrid
 approach is wanted again later. Asset_Register_v1.0.xlsx Source
 column and prompts/assets.json's sourceMethod field updated to
 "ChatGPT (manual)" / "chatgpt-manual" for all 22 rows.
+
+024 Audio sourced 2026-08-06: AU001 (rain.ogg) = "Rain from Indoors -
+Perfect loop" by samesamesame, freesound.org/people/samesamesame/
+sounds/242889/, genuinely CC0, 48s. AU002 (ops.ogg) = "AMBTech_Server
+Room Noise 01_KVV_FREE" by KVV_Audio, freesound.org/people/KVV_Audio/
+sounds/715475/, genuinely CC0, 1:42. Both converted from source MP3
+to .ogg (libvorbis via ffmpeg) and placed in assets/audio/. Pixabay
+candidates were considered first (user-approved) but abandoned after
+their download flow proved unscriptable (Cloudflare-protected SPA,
+no stable direct file URL); Freesound's CDN serves preview files
+directly and its license is genuinely CC0 (matching the Asset
+Register's stated requirement exactly, unlike Pixabay's merely
+similar Content License).
