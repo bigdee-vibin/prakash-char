@@ -38,3 +38,21 @@ Freeze all outputs into static assets before release.
 - Release ZIP
 
 Maintain TODO.md continuously.
+
+## Autonomous Execution
+
+Work independently within the current milestone.
+
+When a task can be reasonably inferred from the approved specification, complete it without asking.
+
+Before each commit:
+- Update TODO.md
+- Update Asset_Register
+- Update CHANGELOG.md if appropriate
+
+Do not proceed to the next milestone until the current milestone's acceptance criteria are satisfied.
+
+Only stop if:
+- A required design decision is genuinely ambiguous.
+- An external dependency is unavailable.
+- A security or licensing concern requires human approval.
