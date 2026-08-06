@@ -1,2 +1,3 @@
-# prakash-char
-For shedding Prakash 
+# Prakāśa-chara
+
+Repository bootstrap for the offline OSINT training experience.
