@@ -30,24 +30,33 @@
 - [x] Audio requirement firmness — **required to ship** (stays High priority), but playback failure remains non-blocking per NFR-6 (DECISIONS.md #018)
 - [x] Cold Open / Operations Centre split — **confirmed** as Scene Bible §2.1 interpreted it (DECISIONS.md #019)
 
-## M2 — Prompt library & asset generation
+## M2 — Prompt library & asset generation (core work complete — 2026-08-06)
 - [x] Build prompts/ library (style-lock preamble + per-asset prompts) — [prompts/style_lock.md](prompts/style_lock.md), [prompts/assets.json](prompts/assets.json)
 - [x] Sourcing method decided: ChatGPT manual generation for all 22 image assets (DECISIONS.md #020–#023; Gemini/Imagen and Unsplash paths built but unused — left in place, not deleted)
 - [x] Source 2 CC0 audio loops — done 2026-08-06 (DECISIONS.md #024): `assets/audio/rain.ogg` (freesound.org/s/242889, CC0, 48s) and `assets/audio/ops.ogg` (freesound.org/s/715475, CC0, 1:42)
-- [x] Quality review of all 22 generated images — 2026-08-06 (DECISIONS.md #025). Found real problems, not cosmetic. Mislabeling fixed mechanically; content/policy issues need your call.
-- [x] 22/22 placed in `assets/images/*.webp` (GD001, EN002, DB001 all re-sent 2026-08-06; EN002 confirmed correct — "HACK METH" signage passes review)
-- [ ] **Decision needed — DB001 (Mission Debrief):** re-sent, content/checklist now accurate to the real 9-room scope, but the "Next Destination" panel reads both "HACK METH" and "RED TEAM OPS AWAITS" in the same image — self-contradicting, and the latter violates DECISIONS.md #012. Also bakes in "YES / NOT YET" buttons as static art — those need to be real HTML controls at build time.
-- [ ] **Decision needed — GD001 (Google Dorking):** re-sent and placed, but bakes in a fully simulated dork query + 10 fake result URLs — same #007/SRS FR-18 violation as the terminal-room trio below.
-- [ ] **Decision needed — D003 (Mission Board):** bakes in all 22 concept-art keys as fully unlocked/labeled, including "MISSION DEBRIEF" and "CHECK-OUT" as hub entries — violates #011 (locked-placeholder requirement) and the Scene Bible. Regenerate with only 9 active keys + inert locked placeholders, or accept as reference art and rebuild the key state in HTML/CSS at Milestone 3 (labels/lock-state never baked into the image in the first place)?
-- [ ] **Decision needed — SG001 (SignalGate) / FC001 (Fiery Cross Reef):** both bake in fabricated specifics not in the source deck (dramatized "targets confirmed / time to execute" chat text; an invented date/coordinates) — Creative Bible §4 fidelity/sensitivity concern for real, sensitive incidents. Regenerate with less invented specificity, or accept as atmospheric/non-literal?
-- [ ] **Decision needed — TC001 / ST001 / GP001 / GD001 (all 4 terminal rooms):** all bake in full simulated tool output (theHarvester/Sherlock/SpiderFoot text, a SET menu, a populated GoPhish dashboard, a dork query + results) — violates #007/SRS FR-18's explicit "no simulated tool output" rule. Regenerate with idle/blank screens, or crop/edit the existing art to blank the screens before use?
-- [ ] Remaining 13 Asset Register rows (F002, SG002, FC002, EX001, EX002, DD001, UI001-UI003, EE001-EE004) are HTML/SVG/CSS build-time components, not image-generated — deferred to Milestone 3, not a Milestone 2 gap
+- [x] Quality review of all 22 generated images — 2026-08-06 (DECISIONS.md #025)
+- [x] 22/22 placed in `assets/images/*.webp`
+- [x] Remaining 13 Asset Register rows (F002, SG002, FC002, EX001, EX002, DD001, UI001-UI003, EE001-EE004) confirmed as HTML/SVG/CSS build-time components, not image-generated — correctly deferred to Milestone 3
 
-## M3 — HTML engine build
-- [ ] Implement schemas as `schemas/*.schema.json` (drafted in Architecture.md §5)
-- [ ] Build HTML engine (scroll engine, Mission Board hub, pause-for-demo component, watermark overlay)
-- [ ] Wire in UI components (Mission Log, Notebook, Evidence Card)
-- [ ] Integrate content and assets
+### Backlog carried forward (4 items, not blocking Milestone 3 start — needs your call, not auto-resolved)
+- [ ] **DB001 (Mission Debrief):** "Next Destination" panel reads both "HACK METH" and "RED TEAM OPS AWAITS" in the same image — self-contradicting, latter violates DECISIONS.md #012. Also bakes in "YES / NOT YET" buttons as static art — need real HTML controls at build time.
+- [ ] **GD001 (Google Dorking):** bakes in a fully simulated dork query + 10 fake result URLs.
+- [ ] **D003 (Mission Board):** bakes in all 22 concept-art keys as fully unlocked/labeled, including "MISSION DEBRIEF" and "CHECK-OUT" as hub entries — violates #011 and the Scene Bible.
+- [ ] **SG001 (SignalGate) / FC001 (Fiery Cross Reef):** bake in fabricated specifics not in the source deck (dramatized "targets confirmed / time to execute" chat text; an invented date/coordinates) — Creative Bible §4 fidelity/sensitivity concern, deliberately left for human judgment rather than auto-resolved.
+- [ ] **TC001 / ST001 / GP001 / GD001 (all 4 terminal rooms):** bake in full simulated tool output — violates #007/SRS FR-18's explicit "no simulated tool output" rule.
+
+## M3 — HTML engine build (first working run-through — 2026-08-06)
+- [x] `index.html` built as a single self-contained file (Decision 002) — scroll engine (C-2), camera transitions (C-3, simplified), Mission Board hub (C-4/C-4a/C-4b), narrative rooms (C-5), terminal rooms + Pause-for-Demo (C-6/C-6a), case study card accent (C-7), check-out controller (C-8), back-to-reception (C-9), watermark (C-10), audio controller (C-11)
+- [x] Full run-through tested in-browser end to end: Cold Open → Operations Centre → Monitor Wall → Pull → Lane → Reception → Mission Board (9 keys + 7 locked placeholders) → all 9 rooms → Check Out → Decision → Mission Brief → Debrief → Lane Return → Cliffhanger
+- [x] Verified zero network requests (all `file://`, satisfies NFR-1) and no console errors
+- [x] Fixed 2 bugs found during testing: "Back to Reception" button visible before entering a room; cliffhanger caption text duplicating/overlapping text already baked into the EN002 art
+- [ ] Implement schemas as `schemas/*.schema.json` (drafted in Architecture.md §5) — data is currently inlined directly in index.html rather than schema-validated, a pragmatic simplification for a single-file artifact
+- [ ] Wire in UI components (Mission Log, Notebook, Evidence Card — UI001-UI003) — not yet built
+- [ ] Easter Egg Wall monitors (EE001-EE004) — not yet built, Monitor Wall scene currently shows only the background art
+- [ ] Keyboard navigation for Mission Board keys — currently click-only, not yet keyboard-focusable (SRS NFR-7 gap)
+- [ ] Bundle real fonts per UI_Style_Guide §2 — currently using system font-stack fallback only
+- [ ] Camera transitions (Scene 2 zoom, Scene 4 rotate) implemented as scroll-snap + fade rather than the CSS 3D transforms Architecture §11 flagged as unvalidated — reliability chosen over full visual fidelity
+- [ ] The 4 backlog image issues (D003, DB001, GD001, terminal-room simulated output) are now live in the running experience — see below
 
 ## M4 — Documentation deliverables
 - [ ] Generate speaker notes

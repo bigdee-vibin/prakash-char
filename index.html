@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prakāśa-chara — In Plain Sight</title>
+<style>
+:root{
+  --pc-bg-base:#0A0B0E;
+  --pc-bg-raised:#12141A;
+  --pc-grid-cyan:#26E5FF;
+  --pc-grid-cyan-dim:#0F5C66;
+  --pc-neon-magenta:#FF2FB0;
+  --pc-amber:#FFB020;
+  --pc-amber-dim:#7A5511;
+  --pc-text-primary:#EAF6F8;
+  --pc-text-secondary:#9FB4B8;
+  --pc-alert-critical:#FF4747;
+  --pc-locked-grey:#2A2D33;
+  --mono: ui-monospace, "SF Mono", Consolas, monospace;
+  --sans: -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--pc-bg-base);color:var(--pc-text-primary);font-family:var(--sans);height:100%;overflow:hidden;}
+body{position:relative;}
+
+/* scanline/grain texture overlay */
+#pc-grain{position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.06;
+  background:repeating-linear-gradient(0deg,#fff 0px,#fff 1px,transparent 1px,transparent 3px);
+  mix-blend-mode:overlay;}
+
+/* persistent watermark, Decision 006 */
+#pc-watermark{position:fixed;right:16px;bottom:16px;z-index:9999;font-family:var(--mono);
+  font-size:11px;letter-spacing:.08em;color:var(--pc-text-secondary);opacity:.4;pointer-events:none;user-select:none;}
+
+/* audio + progress chrome */
+#pc-chrome{position:fixed;top:14px;right:16px;z-index:9500;display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:11px;color:var(--pc-text-secondary);}
+#pc-chrome button{background:rgba(10,11,14,.6);border:1px solid var(--pc-grid-cyan-dim);color:var(--pc-text-primary);
+  border-radius:4px;padding:6px 10px;cursor:pointer;font-family:var(--mono);font-size:11px;}
+#pc-chrome button:hover{border-color:var(--pc-grid-cyan);}
+
+/* ===== LINEAR SCROLL SEQUENCE ===== */
+#pc-linear{height:100%;overflow-y:scroll;scroll-snap-type:y mandatory;}
+.pc-scene{height:100%;width:100%;scroll-snap-align:start;position:relative;display:flex;align-items:flex-end;
+  background-size:cover;background-position:center;}
+.pc-scene::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75),rgba(0,0,0,.15) 45%,rgba(0,0,0,.35));}
+.pc-scene-body{position:relative;z-index:2;padding:48px 56px;max-width:820px;}
+.pc-scene-eyebrow{font-family:var(--mono);font-size:12px;color:var(--pc-grid-cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+.pc-scene-title{font-size:34px;font-weight:700;margin:0 0 10px;color:var(--pc-text-primary);text-shadow:0 2px 20px rgba(0,0,0,.6);}
+.pc-scene-copy{font-size:15px;line-height:1.6;color:var(--pc-text-secondary);max-width:640px;}
+.pc-scene-cta{margin-top:22px;display:inline-block;font-family:var(--mono);font-size:12px;color:var(--pc-amber);
+  border:1px solid var(--pc-amber-dim);padding:10px 16px;border-radius:4px;cursor:pointer;letter-spacing:.06em;background:rgba(0,0,0,.3);}
+.pc-scene-cta:hover{border-color:var(--pc-amber);}
+.pc-scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;font-family:var(--mono);
+  font-size:11px;color:var(--pc-text-secondary);opacity:.7;letter-spacing:.1em;text-transform:uppercase;animation:pcbounce 2s infinite;}
+@keyframes pcbounce{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,6px);}}
+.pc-sign-hackmeth{position:absolute;z-index:2;font-family:var(--mono);color:var(--pc-neon-magenta);
+  text-shadow:0 0 18px var(--pc-neon-magenta);letter-spacing:.08em;pointer-events:none;transition:transform .3s;}
+
+/* ===== MISSION BOARD ===== */
+#pc-hub{position:fixed;inset:0;z-index:400;display:none;background:var(--pc-bg-base) center/cover no-repeat;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;}
+#pc-hub::before{content:"";position:absolute;inset:0;background:rgba(6,7,10,.72);}
+.pc-hub-inner{position:relative;z-index:1;max-width:1100px;width:100%;}
+.pc-hub-heading{text-align:center;margin-bottom:6px;font-size:26px;letter-spacing:.04em;color:var(--pc-text-primary);}
+.pc-hub-sub{text-align:center;font-family:var(--mono);font-size:12px;color:var(--pc-grid-cyan);letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:30px;}
+.pc-keygrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;}
+.pc-key{border:1px solid var(--pc-amber-dim);background:rgba(18,20,26,.85);border-radius:6px;padding:16px 12px;
+  cursor:pointer;text-align:center;font-family:var(--sans);color:var(--pc-text-secondary);transition:.2s;}
+.pc-key .pc-key-icon{font-size:20px;display:block;margin-bottom:8px;color:var(--pc-amber-dim);}
+.pc-key .pc-key-label{font-size:12px;letter-spacing:.04em;}
+.pc-key:hover{border-color:var(--pc-amber);color:var(--pc-text-primary);}
+.pc-key:hover .pc-key-icon{color:var(--pc-amber);}
+.pc-key.lit{border-color:var(--pc-neon-magenta);box-shadow:0 0 16px rgba(255,47,176,.35);}
+.pc-key.lit .pc-key-icon,.pc-key.lit .pc-key-label{color:var(--pc-neon-magenta);}
+.pc-key.locked{cursor:not-allowed;border-color:var(--pc-locked-grey);opacity:.5;}
+.pc-key.locked .pc-key-icon{color:var(--pc-locked-grey);}
+.pc-key.locked:hover{border-color:var(--pc-locked-grey);color:var(--pc-text-secondary);}
+.pc-hub-footer{margin-top:26px;text-align:center;}
+#pc-checkout-btn{display:none;}
+
+/* ===== ROOM VIEW ===== */
+#pc-room{position:fixed;inset:0;z-index:500;display:none;background:var(--pc-bg-base) center/cover no-repeat;}
+#pc-room::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,.25) 55%);}
+.pc-room-inner{position:absolute;z-index:1;left:0;right:0;bottom:0;padding:40px 56px;max-width:760px;max-height:78vh;overflow-y:auto;}
+.pc-room-eyebrow{font-family:var(--mono);font-size:11px;color:var(--pc-grid-cyan);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;}
+.pc-room-title{font-size:26px;margin:0 0 12px;}
+.pc-room-body p{font-size:14px;line-height:1.65;color:var(--pc-text-secondary);margin:0 0 12px;}
+.pc-room-critical{color:var(--pc-alert-critical);border-left:2px solid var(--pc-alert-critical);padding-left:10px;}
+#pc-room-back{display:none;position:fixed;top:14px;left:16px;z-index:600;font-family:var(--mono);font-size:12px;color:var(--pc-text-primary);
+  background:rgba(10,11,14,.7);border:1px solid var(--pc-grid-cyan-dim);border-radius:4px;padding:8px 14px;cursor:pointer;}
+#pc-room-back:hover{border-color:var(--pc-grid-cyan);}
+
+/* terminal / pause-for-demo */
+.pc-terminal-lead{background:rgba(0,0,0,.35);border:1px solid var(--pc-grid-cyan-dim);border-radius:4px;padding:14px;margin-bottom:16px;font-family:var(--mono);font-size:12.5px;color:var(--pc-text-secondary);}
+#pc-interstitial{display:none;background:rgba(2,3,4,.94);border:1px solid var(--pc-grid-cyan);border-radius:4px;
+  padding:22px;font-family:var(--mono);margin-top:8px;}
+#pc-interstitial .pc-int-line{color:var(--pc-grid-cyan);font-size:14px;margin-bottom:10px;letter-spacing:.02em;}
+#pc-interstitial .pc-int-setup{color:var(--pc-text-secondary);font-size:12px;}
+.pc-begin-demo{font-family:var(--mono);font-size:12px;color:var(--pc-amber);border:1px solid var(--pc-amber-dim);
+  padding:9px 14px;border-radius:4px;cursor:pointer;display:inline-block;background:rgba(0,0,0,.3);}
+
+/* case study card accent */
+.pc-case-card{border:1px solid var(--pc-grid-cyan-dim);background:rgba(0,0,0,.3);padding:14px;border-radius:4px;margin-top:12px;}
+.pc-case-card .pc-case-label{font-family:var(--mono);font-size:11px;color:var(--pc-grid-cyan);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+
+/* mission board key wall cursor cue (one-time) */
+.pc-choose-cue{position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:2;font-family:var(--mono);
+  font-size:11px;color:var(--pc-amber);letter-spacing:.08em;text-transform:uppercase;opacity:0;transition:opacity .6s;}
+.pc-choose-cue.show{opacity:1;}
+
+@media (prefers-reduced-motion: reduce){
+  .pc-scroll-hint{animation:none;}
+  #pc-linear{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+
+<div id="pc-grain"></div>
+<div id="pc-watermark">Lt Col Dheeraj Bharti ©2026</div>
+
+<div id="pc-chrome">
+  <span id="pc-progress"></span>
+  <button id="pc-mute">🔊 Mute</button>
+</div>
+
+<audio id="pc-audio-rain" src="assets/audio/rain.ogg" loop></audio>
+<audio id="pc-audio-ops" src="assets/audio/ops.ogg" loop></audio>
+
+<!-- LINEAR PRE-HUB + POST-HUB SEQUENCE -->
+<div id="pc-linear"></div>
+
+<!-- MISSION BOARD HUB -->
+<div id="pc-hub">
+  <div class="pc-choose-cue" id="pc-choose-cue">You are now choosing</div>
+  <div class="pc-hub-inner">
+    <div class="pc-hub-heading">OSINT Hotel — Reception</div>
+    <div class="pc-hub-sub">Available Intelligence Missions</div>
+    <div class="pc-keygrid" id="pc-keygrid"></div>
+    <div class="pc-hub-footer">
+      <div class="pc-scene-cta pc-checkout-cta" id="pc-checkout-btn">Check Out →</div>
+    </div>
+  </div>
+</div>
+
+<!-- ROOM VIEW -->
+<button id="pc-room-back">← Back to Reception</button>
+<div id="pc-room">
+  <div class="pc-room-inner" id="pc-room-inner"></div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============ DATA (inlined per Architecture.md #2 -- file:// forbids fetch of local JSON) ============ */
+
+var LINEAR_PRE = [
+  {
+    id:"cold-open", bg:"assets/images/A001_mission_splash.webp", eyebrow:"IW/HAK/15.3 · OSINT & Social Engineering",
+    title:"Prakāśa-chara", copy:"In Plain Sight.", cta:"Begin", audio:null
+  },
+  {
+    id:"operations-centre", bg:"assets/images/B001_operations_centre.webp", eyebrow:"Scene 0b",
+    title:"Operations Centre", copy:"Somewhere behind a bank of monitors, an operator is watching. You're looking over their shoulder.",
+    cta:"Scroll to continue", audio:"ops"
+  },
+  {
+    id:"monitor-wall", bg:"assets/images/B002_monitor_wall.webp", eyebrow:"Scene 1",
+    title:"The Monitor Wall", copy:"Peripheral screens loop footage from courses already completed. One monitor, dead-centre, stays dark. For now.",
+    cta:"Scroll to continue", audio:"ops"
+  },
+  {
+    id:"the-pull", bg:"assets/images/B003_screen_pull.webp", eyebrow:"Scene 2",
+    title:"The Pull", copy:"The dark screen wakes up. The room falls away.",
+    cta:"Scroll to continue", audio:null
+  },
+  {
+    id:"cyber-lane", bg:"assets/images/C001_cyber_lane.webp", eyebrow:"Scene 3",
+    title:"The Lane", copy:"Rain-slicked neon, a street with no end in sight. Somewhere ahead, a sign glows red: HACK METH. Not tonight.",
+    cta:"Scroll to continue", audio:"rain"
+  },
+  {
+    id:"reception-turn", bg:"assets/images/C004_osint_hq.webp", eyebrow:"Scene 4",
+    title:"The Turn — OSINT Hotel", copy:"A door, off the main lane. The sign above it reads OSINT.",
+    cta:"Enter the Hotel", audio:"rain"
+  }
+];
+
+var LINEAR_POST = [
+  {
+    id:"decision", bg:null, eyebrow:"Decision Dilemma", title:"One-Line Policy",
+    copy:"As an officer supervising an OSINT team, you're asked to profile a mediator nation's minister ahead of sensitive talks. Sources are all public — but the request itself is politically loaded. What's your one-line authorisation policy before tasking begins?",
+    cta:"Continue", audio:null
+  },
+  {
+    id:"mission-brief", bg:null, eyebrow:"Mission Brief", title:"Before You Go",
+    copy:"Nine keys, nine perspectives on the same discipline: information that was never hidden, only unexamined.",
+    cta:"Continue", audio:null
+  },
+  {
+    id:"debrief", bg:"assets/images/DB001_mission_debrief.webp", eyebrow:"Debrief", title:"Same Target. Different Dossiers.",
+    copy:"Where did your findings converge — and where did they diverge? What did this exercise leak that a real organisation leaks too, every day, without noticing? The dossier you built is exactly what IW/HAK/15.4 (Gaining Access) picks up next.",
+    cta:"Continue", audio:null
+  },
+  {
+    id:"lane-return", bg:"assets/images/EN001_lane_return.webp", eyebrow:"Back on the Lane", title:"Closer Now",
+    copy:"The sign is brighter than it was. Still not tonight.",
+    cta:"Scroll to continue", audio:"rain"
+  },
+  {
+    id:"cliffhanger", bg:"assets/images/EN002_hack_meth_reveal.webp", eyebrow:"", title:"",
+    copy:"", cta:null, audio:"rain"
+  }
+];
+
+var ROOMS = [
+  {
+    key:"FOUNDATIONS", type:"narrative", title:"Foundations Room", bg:"assets/images/F001_foundations_room.webp",
+    body:[
+      "Open Source Intelligence — intelligence produced from publicly available information, collected, exploited, and disseminated to meet a specific requirement.",
+      "Sources: search engines & dorking, social media, public records, DNS/WHOIS, satellite imagery, certificate transparency logs, breach databases, code repositories.",
+      "Not just \"Googling\" — a disciplined cycle: Direction → Collection → Processing → Analysis → Dissemination. Analysis is the highest-value, hardest-to-automate step: judgment, corroboration, verification."
+    ]
+  },
+  {
+    key:"SIGNALGATE", type:"narrative", title:"SignalGate Suite", bg:"assets/images/SG001_signalgate_room.webp", caseStudy:true,
+    body:[
+      "A single accidental invite cascaded into a national security exposure.",
+      "A senior official's accidental addition of a journalist to a group chat on an unofficial, unapproved messaging app led to sensitive operational details being visible outside cleared channels. The subsequent compromise of the archiving tool used by that app converted a process failure into a full public disclosure.",
+      "No hacking was required to start the chain — just an avoidable human error in tool selection and group management."
+    ]
+  },
+  {
+    key:"FIERY_CROSS_REEF", type:"narrative", title:"Fiery Cross Reef Suite", bg:"assets/images/FC001_fiery_cross_reef.webp", caseStudy:true,
+    body:[
+      "The camera didn't lie — an official broadcast did the exposing.",
+      "A Lunar New Year video message inadvertently revealed a PLA Cyberspace Force unit stationed at a contested reef in the Spratly Islands — placing state cyber operators near undersea cable infrastructure and regional telecom nodes serving multiple allied nations.",
+      "No breach, no leak, no adversary tradecraft: a state's own official media did the exposing. Official propaganda is a legitimate OSINT source."
+    ]
+  },
+  {
+    key:"GREY_AREAS", type:"narrative", title:"Grey Areas & Legal", bg:"assets/images/GA001_grey_areas_room.webp",
+    body:[
+      "Passive OSINT ≠ blanket permission — scope, authorisation, and intent still matter.",
+      "<span class=\"pc-room-critical\">Never test systems or people you don't own or have written authorisation to test.</span>",
+      "Some dorking behaviour can itself trigger IDS/IPS alerting on the target side. Understanding a technique is not permission to use it outside an authorised engagement. When in doubt: get authorisation in writing before you start, not after you find something."
+    ]
+  },
+  {
+    key:"SE_BRIDGE", type:"narrative", title:"The Bridge — Recon → Pretext", bg:"assets/images/SB001_se_bridge.webp",
+    body:[
+      "The art of manipulating or deceiving someone to gain access, information, or control they would not otherwise grant.",
+      "Every SE pretext is only as good as the recon behind it — a name, a role, a project, a manager's name. The email-naming convention you infer from OSINT becomes the delivery address for the next stage.",
+      "A dossier isn't the end product — it's raw material for a targeted campaign. This is the direct link into IW/HAK/15.4 (Gaining Access)."
+    ]
+  },
+  {
+    key:"GOOGLE_DORKING", type:"terminal", title:"Google Dorking", bg:"assets/images/GD001_google_dorking_terminal.webp",
+    setup:"Instructor laptop — real internet, pre-cleared target only."
+  },
+  {
+    key:"TOOL_CHAIN", type:"terminal", title:"OSINT Tool Chain", bg:"assets/images/TC001_tool_chain.webp",
+    setup:"Instructor laptop — theHarvester → Sherlock → SpiderFoot, real internet.",
+    lead:"Where AI Fits In OSINT Now: AI-powered correlation engines auto-connect related data points across large datasets — faster triage, not better judgment. The open risk: AI summaries can hallucinate connections that don't exist. Every AI-assisted finding still needs manual verification."
+  },
+  {
+    key:"SET", type:"terminal", title:"SET Walkthrough", bg:"assets/images/ST001_set_room.webp",
+    setup:"Kali VM (attacker) → Ubuntu VM (Apex Dynamics decoy) — air-gapped."
+  },
+  {
+    key:"GOPHISH", type:"terminal", title:"GoPhish Walkthrough", bg:"assets/images/GP001_gophish_room.webp",
+    setup:"Kali/Debian VM → Ubuntu VM decoy mailbox — air-gapped."
+  }
+];
+
+var LOCKED_KEYS = ["Threat Intelligence","Dark Web & Leaks","GEOINT Suite","Imagery & Metadata","OPSEC & Privacy","Report & Attribution","Archive Vault"];
+
+/* ============ STATE ============ */
+var keyState = {}; // keyId -> {lit:bool, visited:number}
+ROOMS.forEach(function(r){ keyState[r.key] = {lit:false, visited:0}; });
+
+var linearEl = document.getElementById("pc-linear");
+var hubEl = document.getElementById("pc-hub");
+var roomEl = document.getElementById("pc-room");
+var roomInner = document.getElementById("pc-room-inner");
+var roomBack = document.getElementById("pc-room-back");
+var progressEl = document.getElementById("pc-progress");
+var audioRain = document.getElementById("pc-audio-rain");
+var audioOps = document.getElementById("pc-audio-ops");
+var muted = false;
+
+/* ============ AUDIO CONTROLLER (C-11) ============ */
+function playLoop(which){
+  [audioRain, audioOps].forEach(function(a){ a.pause(); });
+  if (muted || !which) return;
+  var el = which === "rain" ? audioRain : audioOps;
+  var p = el.play();
+  if (p && p.catch) p.catch(function(){ /* autoplay blocked -- fail silently, NFR-6 */ });
+}
+document.getElementById("pc-mute").addEventListener("click", function(){
+  muted = !muted;
+  this.textContent = muted ? "🔇 Muted" : "🔊 Mute";
+  if (muted){ audioRain.pause(); audioOps.pause(); }
+});
+
+/* ============ LINEAR SCENE RENDERER (C-2) ============ */
+function renderLinear(list, onDone){
+  linearEl.innerHTML = "";
+  list.forEach(function(s, i){
+    var sec = document.createElement("div");
+    sec.className = "pc-scene";
+    if (s.bg) sec.style.backgroundImage = "url('" + s.bg + "')";
+    else sec.style.background = "radial-gradient(circle at 30% 30%, #14171d, #05060a)";
+    var body = document.createElement("div");
+    body.className = "pc-scene-body";
+    var html = "";
+    if (s.eyebrow) html += '<div class="pc-scene-eyebrow">' + s.eyebrow + "</div>";
+    if (s.title) html += '<h1 class="pc-scene-title">' + s.title + "</h1>";
+    html += '<p class="pc-scene-copy">' + s.copy + "</p>";
+    if (s.cta) html += '<div class="pc-scene-cta" data-i="' + i + '">' + s.cta + "</div>";
+    body.innerHTML = html;
+    sec.appendChild(body);
+    if (i < list.length - 1) {
+      var hint = document.createElement("div");
+      hint.className = "pc-scroll-hint";
+      hint.textContent = "Scroll ↓";
+      sec.appendChild(hint);
+    }
+    if (s.id === "cyber-lane" || s.id === "lane-return") {
+      var sign = document.createElement("div");
+      sign.className = "pc-sign-hackmeth";
+      sign.style.right = "12%";
+      sign.style.top = "30%";
+      sign.style.fontSize = s.id === "lane-return" ? "34px" : "22px";
+      sign.textContent = "HACK METH";
+      sec.appendChild(sign);
+    }
+    linearEl.appendChild(sec);
+  });
+
+  var ctas = linearEl.querySelectorAll(".pc-scene-cta");
+  ctas.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var i = parseInt(btn.getAttribute("data-i"), 10);
+      if (i >= list.length - 1) { onDone(); return; }
+      var next = linearEl.children[i+1];
+      next.scrollIntoView({behavior:"smooth"});
+    });
+  });
+
+  var sections = linearEl.querySelectorAll(".pc-scene");
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){
+        var idx = Array.prototype.indexOf.call(sections, en.target);
+        var s = list[idx];
+        if (s && s.audio !== undefined) playLoop(s.audio);
+        progressEl.textContent = "Scene " + (idx+1) + " / " + list.length;
+      }
+    });
+  }, {threshold:.6});
+  sections.forEach(function(s){ io.observe(s); });
+
+  linearEl.style.display = "block";
+  linearEl.scrollTop = 0;
+}
+
+/* ============ MISSION BOARD HUB (C-4) ============ */
+var hubEnteredOnce = false;
+function showHub(){
+  linearEl.style.display = "none";
+  roomEl.style.display = "none";
+  hubEl.style.display = "flex";
+  hubEl.style.backgroundImage = "url('assets/images/D003_key_wall.webp')";
+  progressEl.textContent = "Mission Board";
+  renderKeygrid();
+  if (!hubEnteredOnce){
+    hubEnteredOnce = true;
+    document.body.style.cursor = "pointer";
+    var cue = document.getElementById("pc-choose-cue");
+    cue.classList.add("show");
+    setTimeout(function(){ cue.classList.remove("show"); }, 2600);
+  }
+}
+
+function renderKeygrid(){
+  var grid = document.getElementById("pc-keygrid");
+  grid.innerHTML = "";
+  ROOMS.forEach(function(r){
+    var st = keyState[r.key];
+    var tile = document.createElement("div");
+    tile.className = "pc-key" + (st.lit ? " lit" : "");
+    tile.setAttribute("role","button");
+    tile.setAttribute("aria-label", r.title + (st.lit ? " (visited)" : " (unvisited)"));
+    tile.innerHTML = '<span class="pc-key-icon">' + (r.type === "terminal" ? "&gt;_" : "🗝") + '</span><span class="pc-key-label">' + r.title + "</span>";
+    tile.addEventListener("click", function(){ openRoom(r); });
+    grid.appendChild(tile);
+  });
+  LOCKED_KEYS.forEach(function(label){
+    var tile = document.createElement("div");
+    tile.className = "pc-key locked";
+    tile.setAttribute("aria-disabled","true");
+    tile.title = "Available in a future mission";
+    tile.innerHTML = '<span class="pc-key-icon">🔒</span><span class="pc-key-label">' + label + "</span>";
+    grid.appendChild(tile);
+  });
+  var allVisited = ROOMS.every(function(r){ return keyState[r.key].lit; });
+  document.getElementById("pc-checkout-btn").style.display = allVisited ? "inline-block" : "none";
+}
+
+document.getElementById("pc-checkout-btn").addEventListener("click", function(){
+  hubEl.style.display = "none";
+  renderLinear(LINEAR_POST, function(){
+    linearEl.style.display = "none";
+    // end of experience -- deliberately non-terminal, no further action
+  });
+});
+
+/* ============ ROOM VIEW (C-5 / C-6) ============ */
+function openRoom(r){
+  keyState[r.key].lit = true;
+  keyState[r.key].visited++;
+  hubEl.style.display = "none";
+  roomEl.style.display = "block";
+  roomBack.style.display = "block";
+  roomEl.style.backgroundImage = "url('" + r.bg + "')";
+  progressEl.textContent = r.title;
+
+  var html = '<div class="pc-room-eyebrow">' + (r.type === "terminal" ? "Live Demo Room" : "Investigation Room") + '</div>';
+  html += '<h2 class="pc-room-title">' + r.title + "</h2>";
+
+  if (r.type === "narrative"){
+    html += '<div class="pc-room-body">';
+    r.body.forEach(function(p){ html += "<p>" + p + "</p>"; });
+    html += "</div>";
+    if (r.caseStudy){
+      html += '<div class="pc-case-card"><div class="pc-case-label">Case Study — Source-Verified Summary</div>' +
+        '<p style="margin:0;font-size:13px;">Facts presented as reported in the source session deck. No dramatized or invented detail beyond what is documented.</p></div>';
+    }
+  } else {
+    html += '<div class="pc-terminal-lead">';
+    if (r.lead) html += "<p style=\"margin:0 0 10px;\">" + r.lead + "</p>";
+    html += '<div class="pc-begin-demo" id="pc-begin-demo">Continue →</div>';
+    html += '<div id="pc-interstitial">' +
+      '<div class="pc-int-line">&gt;&gt; LIVE DEMO — see instructor workstation</div>' +
+      '<div class="pc-int-setup">' + r.setup + "</div></div>";
+    html += "</div>";
+  }
+  roomInner.innerHTML = html;
+
+  if (r.type === "terminal"){
+    document.getElementById("pc-begin-demo").addEventListener("click", function(){
+      document.getElementById("pc-interstitial").style.display = "block";
+      this.style.display = "none";
+    });
+  }
+}
+
+roomBack.addEventListener("click", function(){
+  roomEl.style.display = "none";
+  roomBack.style.display = "none";
+  showHub();
+});
+
+/* ============ BOOT ============ */
+renderLinear(LINEAR_PRE, showHub);
+
+})();
+</script>
+</body>
+</html>
