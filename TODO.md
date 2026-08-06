@@ -5,8 +5,8 @@
 - [x] Repository audit (see [docs/Repository_Audit.md](docs/Repository_Audit.md)) — 2026-08-06
 
 ## M0 — Repository hygiene
-- [ ] Commit pending reorganization (assets/, docs/, ppt/, .gitignore, requirements.txt)
-- [ ] Add .env.example (OPENAI_API_KEY=, FIRECRAWL_API_KEY=)
+- [x] Commit pending reorganization (assets/, docs/, ppt/, .gitignore, requirements.txt) — committed in Milestone 1
+- [x] Add .env.example — done 2026-08-06 (UNSPLASH_*, GEMINI_API_KEY, OPENAI_API_KEY, FIRECRAWL_API_KEY)
 - [ ] Expand README.md with setup/run instructions
 
 ## M1 — Software specification (complete — 2026-08-06)
@@ -31,9 +31,12 @@
 - [x] Cold Open / Operations Centre split — **confirmed** as Scene Bible §2.1 interpreted it (DECISIONS.md #019)
 
 ## M2 — Prompt library & asset generation
-- [ ] Build prompts/ library (style-lock preamble + per-asset prompts)
-- [ ] Generate remaining artwork — 33 registered "To Generate" assets in Asset_Register_v1.0.xlsx (29 High + 4 Medium priority EE001-EE004)
-- [ ] Source 2 CC0 audio loops (rain.ogg, ops.ogg)
+- [x] Build prompts/ library (style-lock preamble + per-asset prompts) — [prompts/style_lock.md](prompts/style_lock.md), [prompts/assets.json](prompts/assets.json)
+- [x] Sourcing method decided: ChatGPT manual generation for all 22 image assets (DECISIONS.md #020–#023; Gemini/Imagen and Unsplash paths built but unused — left in place, not deleted)
+- [x] 4/22 generated and placed: A001, A002, B003, SB001 → `assets/images/*.webp`
+- [ ] 18/22 pending — prompts handed off as [prompts/remaining_18_prompts.md](prompts/remaining_18_prompts.md) (zipped, sent 2026-08-06); waiting on generated images to be returned
+- [ ] Remaining Easter Egg Wall assets (EE001-EE004, HTML/CSS) — build-time, not image-generated, deferred to Milestone 3
+- [ ] Source 2 CC0 audio loops (rain.ogg, ops.ogg) — not started; downloading external files needs explicit go-ahead per file (source/size) when we get to it
 
 ## M3 — HTML engine build
 - [ ] Implement schemas as `schemas/*.schema.json` (drafted in Architecture.md §5)

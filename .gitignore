@@ -13,5 +13,8 @@ __pycache__/
 release/
 build/
 
+# Raw manually-generated images staged before webp conversion (see assets/images/ for shipped versions)
+/images/
+
 # Logs
 *.log

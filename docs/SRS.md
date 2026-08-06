@@ -57,7 +57,7 @@ A standalone artifact, not a service. It has no backend, no network calls at run
 ### 2.4 Constraints (carried from governing documents)
 - **C-1** Final output is `index.html`; vanilla HTML/CSS/JS only — no React/Vue/Node at runtime (CLAUDE.md).
 - **C-2** No runtime internet access, no external dependencies — all fonts, images, audio, and scripts must be locally bundled (CLAUDE.md, DECISIONS.md #001–#003).
-- **C-3** OpenAI Images API and Firecrawl are build-time tools only, never called at runtime (DECISIONS.md #004–#005).
+- **C-3** The Gemini API (image generation) and Firecrawl are build-time tools only, never called at runtime (DECISIONS.md #004–#005, #020).
 - **C-4** Live demonstrations remain instructor-led; the product must never simulate Segments 2, 3, 6, 7, 8 in-browser (DECISIONS.md #007, brief §"Explicit Scope Boundary").
 - **C-5** A persistent watermark reading "Lt Col Dheeraj Bharti ©2026" must be visible throughout (DECISIONS.md #006).
 - **C-6** Definition of Done (PROJECT.md): double-clicking `index.html` runs the complete experience offline, with no missing-asset errors and no network requests firing.

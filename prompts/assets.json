@@ -1,0 +1,207 @@
+[
+  {
+    "assetId": "A001",
+    "title": "Mission Splash",
+    "fileName": "A001_mission_splash.webp",
+    "size": "1536x1024",
+    "prompt": "Minimalist title card for 'Prakasha-chara: In Plain Sight' \u2014 a glowing calligraphic mark suggesting light cutting through darkness, near-black background, single beam of cyan-white light, restrained and elegant, no clutter, cinematic title-screen composition.",
+    "sourceMethod": "chatgpt-manual",
+    "status": "generated-2026-08-06"
+  },
+  {
+    "assetId": "A002",
+    "title": "Ancient Spotlight",
+    "fileName": "A002_spotlight.webp",
+    "size": "1536x1024",
+    "prompt": "Ancient Indian silhouettes in shadow, one figure illuminated by a single dramatic spotlight beam amid the others in darkness \u2014 visual metaphor for 'in plain sight,' timeless architectural silhouette of pillars and arches, painterly cinematic lighting, connects the ancient theme of observation and visibility to the modern OSINT subject.",
+    "sourceMethod": "chatgpt-manual",
+    "status": "generated-2026-08-06"
+  },
+  {
+    "assetId": "B001",
+    "title": "Operations Centre",
+    "fileName": "B001_operations_centre.webp",
+    "size": "1536x1024",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Dark military SOC operations room, silhouette of a uniformed operator seen from behind, lit only by the glow of multiple monitors, moody blue-cyan lighting, peering-over-the-shoulder framing, empty chairs and consoles in soft-focus background.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "B002",
+    "title": "Monitor Wall",
+    "fileName": "B002_monitor_wall.webp",
+    "size": "1536x1024",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Bank of four to five peripheral monitors surrounding a larger dim central monitor, each peripheral screen showing faint ambient terminal/code glow as texture only (illegible, not readable text), central monitor dark and idle, cyan-tinted control-room lighting.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "B003",
+    "title": "Screen Pull",
+    "fileName": "B003_screen_pull.webp",
+    "size": "1536x1024",
+    "prompt": "Abstract transition artwork \u2014 a central monitor screen brightening and expanding to fill the frame, motion-blur streaks suggesting being pulled into the screen, a neon grid pattern emerging within, the surrounding dark room fading to black at the edges.",
+    "sourceMethod": "chatgpt-manual",
+    "status": "generated-2026-08-06"
+  },
+  {
+    "assetId": "C001",
+    "title": "Cyber Lane",
+    "fileName": "C001_cyber_lane.webp",
+    "size": "1536x1024",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Tron-style neon-lit Tokyo backstreet at night, rain-slicked reflective pavement, glowing vending machines, katakana-flavoured decorative signage used only as non-legible background atmosphere, narrow street receding into deep perspective, cyan grid-line accents on architecture, magenta and amber neon signage glow reflected in puddles.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "C004",
+    "title": "OSINT HQ",
+    "fileName": "C004_osint_hq.webp",
+    "size": "1536x1024",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Exterior facade of an ornate hotel-styled building at night on a neon backstreet, glowing sign reading 'OSINT HOTEL' in cyan neon above the entrance, warm lobby light glowing through the doorway contrasted against the cool neon street, rain-slicked entrance steps.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "C005",
+    "title": "HACK METH",
+    "fileName": "C005_hack_meth.webp",
+    "size": "1536x1024",
+    "notes": "Signage text is canonical per DECISIONS.md #012 (HACK METH prevails over the brief's 'RED TEAM OPS').",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Distant glowing neon sign reading 'HACK METH' in magenta/hot-pink neon, mounted high on a building far down a rain-slicked neon backstreet, small and atmospheric in the depth of the frame, moody long-lens night-street composition.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "D001",
+    "title": "Reception Lobby",
+    "fileName": "D001_reception_lobby.webp",
+    "size": "1536x1024",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Ornate hotel reception lobby at night, dark marble and brass fixtures, warm lamp lighting mixed with cool cyan neon accents, an empty reception desk, a large chandelier overhead, glass doors showing the neon street outside, quiet and atmospheric.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "D003",
+    "title": "Key Wall",
+    "fileName": "D003_key_wall.webp",
+    "size": "1536x1024",
+    "notes": "This is the Mission Board base art (Creative Bible \u00a77). Base image shows all keys unlit \u2014 lit/locked visual states are applied as a UI layer at runtime, not baked into this image.",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Old-style hotel pigeonhole key rack mounted on a wall behind a reception desk, rows of small numbered slots each holding a metal key rendered as unlit/greyed-out silhouettes with no glow, ornate brass-and-marble frame, warm ambient lighting.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "F001",
+    "title": "Foundations Room",
+    "fileName": "F001_foundations_room.webp",
+    "size": "1536x1024",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Small study and archive room lined with card-catalogue drawers, one drawer left open with warm light spilling out, a leather armchair, bookshelves, a large wall-mounted world map display with faint cyan data overlays, a cozy yet intelligence-facility atmosphere.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "SG001",
+    "title": "SignalGate Room",
+    "fileName": "SG001_signalgate_room.webp",
+    "size": "1536x1024",
+    "notes": "Sensitivity constraint applies \u2014 see style_lock.md. No real individual depicted.",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Dim hotel room interior, a smartphone lying face-up on a bed with a cracked screen glowing faintly, a frozen group-chat notification cascade projected as a soft abstract glitch pattern on the wall, no people and no readable text depicted, moody blue-cyan lighting, evidence-room atmosphere.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "FC001",
+    "title": "Fiery Cross Reef",
+    "fileName": "FC001_fiery_cross_reef.webp",
+    "size": "1536x1024",
+    "notes": "Sensitivity constraint applies \u2014 see style_lock.md. No real individual, unit, or vessel identifiably depicted.",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Hotel room with a window looking out over a dark night ocean, a reef faintly visible under moonlight in the far distance, a small broadcast-style screen on the desk glowing with a looping abstract frame, minimalist and quiet, cool moonlit blues.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "GD001",
+    "title": "Google Dorking Terminal",
+    "fileName": "GD001_google_dorking_terminal.webp",
+    "size": "1536x1024",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Bare wooden desk with a single glowing CRT-style terminal monitor showing an idle command prompt with a generic blinking cursor (no readable real command output), an empty chair pulled out, an isolated pool of monitor light in an otherwise dark room, a waiting and expectant mood.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "TC001",
+    "title": "Tool Chain",
+    "fileName": "TC001_tool_chain.webp",
+    "size": "1536x1024",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Desk with three tiled terminal panes on a widescreen monitor, each showing a generic idle command-prompt state with abstracted, illegible text (not real tool output), cyan monitor glow, dark room, the same desk motif as the Google Dorking terminal room for visual continuity.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "GA001",
+    "title": "Grey Areas Room",
+    "fileName": "GA001_grey_areas_room.webp",
+    "size": "1536x1024",
+    "notes": "Sensitivity constraint applies \u2014 see style_lock.md.",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Room papered floor-to-ceiling with redacted newspaper clippings and blacked-out censorship strips, hairline cracks of light glowing through some of the redactions, moody and slightly claustrophobic, cyan-white light bleeding through the cracks, no real headlines or identifiable text legible.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "SB001",
+    "title": "SE Bridge",
+    "fileName": "SB001_se_bridge.webp",
+    "size": "1536x1024",
+    "prompt": "A short interior bridge or corridor connecting two doors, one marked 'RECON' and one marked 'PRETEXT' in glowing signage, a folder of documents visible mid-carry across the bridge, symbolic architectural composition, moody cyan-amber lighting.",
+    "sourceMethod": "chatgpt-manual",
+    "status": "generated-2026-08-06"
+  },
+  {
+    "assetId": "ST001",
+    "title": "SET Room",
+    "fileName": "ST001_set_room.webp",
+    "size": "1536x1024",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Desk with a Kali-Linux-styled terminal showing a generic idle tool banner with abstract, non-functional text, dark room, single monitor glow, the same desk-and-chair motif as the other terminal rooms for visual continuity.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "GP001",
+    "title": "GoPhish Room",
+    "fileName": "GP001_gophish_room.webp",
+    "size": "1536x1024",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Desk with a dashboard-style monitor mid-load, generic abstract UI panels and charts with no real branding or readable data, dark room, single monitor glow, the same desk-and-chair motif as the other terminal rooms.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "DB001",
+    "title": "Mission Debrief",
+    "fileName": "DB001_mission_debrief.webp",
+    "size": "1536x1024",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Quiet debrief room, a round table with two facing empty chairs, a wall display showing a faint abstract summary graphic with no readable text, warm contemplative lighting mixed with cool cyan accents, a reflective and calm mood.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "EN001",
+    "title": "Lane Return",
+    "fileName": "EN001_lane_return.webp",
+    "size": "1536x1024",
+    "notes": "Signage text is canonical per DECISIONS.md #012.",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "The same neon Tokyo backstreet as the Cyber Lane scene, now viewed with the distant 'HACK METH' sign appearing closer and brighter than before, rain-slicked street, continuity of composition with the earlier lane scene but heightened glow intensity on the distant sign.",
+    "status": "pending-manual-generation"
+  },
+  {
+    "assetId": "EN002",
+    "title": "HACK METH Reveal",
+    "fileName": "EN002_hack_meth_reveal.webp",
+    "size": "1536x1024",
+    "notes": "Signage text is canonical per DECISIONS.md #012.",
+    "sourceMethod": "chatgpt-manual",
+    "prompt": "Close-up night composition of the glowing magenta neon 'HACK METH' sign now large and fully legible, camera stopped just short of the building's door, dramatic close framing, rain and neon reflections, moody cliffhanger atmosphere, fading toward black at the frame edges.",
+    "status": "pending-manual-generation"
+  }
+]

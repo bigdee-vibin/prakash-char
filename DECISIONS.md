@@ -85,3 +85,67 @@ Scene_Bible.md §2.1: "Cold Open" is a new, minimal title/splash beat
 brief's original dark-ops-room/silhouette description (asset B001).
 This resolves the two-beats-vs-one-row discrepancy between the frozen
 scene order and the brief/Asset Register.
+
+020 SUPERSEDES 005. Concept-art generation switches from the OpenAI
+Images API to the Gemini API (Imagen), because no OpenAI API key is
+available. Reason is purely credential availability, not a quality or
+style judgment — CLAUDE.md, requirements.txt, prompts/style_lock.md,
+scripts/generate_images.py, and Asset_Register_v1.0.xlsx's Source
+column updated accordingly (OpenAI Images -> Gemini Images
+everywhere it named the generation tool). Still build-time only, same
+restriction as before (never called at runtime).
+
+021 SUPERSEDES 020. Gemini's image-generation models require billing
+enabled (free tier has a hard 0 quota for image models — not a rate
+limit, confirmed via a live 429 RESOURCE_EXHAUSTED response). Rather
+than wait on billing, asset sourcing switches to Unsplash stock
+photography for the 22 "OpenAI Images"/"Gemini Images"-sourced rows.
+
+This is a real art-direction change, not just a tooling swap: Unsplash
+supplies real photography, not custom illustration, so it cannot
+render bespoke signage/UI text (e.g. "OSINT HOTEL," "HACK METH," the
+Mission Board's engraved key labels, terminal idle prompts). Resolution:
+Unsplash photos become mood/environment BACKGROUND LAYERS only; every
+piece of bespoke text/signage/neon UI that was previously expected to
+be baked into generated art is now rendered as a CSS/SVG OVERLAY at
+build/runtime instead (Component Specification C-1's scene container
+gains an explicit overlay sub-layer for this — see Component_Specification.md).
+The neon/scanline/palette visual language in UI_Style_Guide.md is
+unchanged; only where it lives (overlay vs. baked-into-background)
+changes.
+
+Asset_Register_v1.0.xlsx Source column updated: the 22 rows move from
+"Gemini Images" to "Unsplash" (background photo) with an added Notes
+entry naming the required overlay content per asset (see Scene Bible/
+Component Specification for overlay content, prompts/assets.json for
+the corresponding search queries).
+
+022 REFINES 021 into a hybrid sourcing split, not a blanket move to
+Unsplash. 18 of the 22 assets are realistically photographable subjects
+(rainy neon streets, SOC rooms, hotel lobbies, terminal desks, a
+vintage hotel key rack) and stay sourced from Unsplash + CSS/SVG
+overlay per #021. The remaining 4 — A001 (Mission Splash title card),
+A002 (Ancient Spotlight), B003 (Screen Pull transition), SB001
+(SE Bridge, the two-door/carried-folder staging) — depict compositions
+too bespoke/symbolic/narrative-specific to exist as stock photography.
+For these 4, ChatGPT-ready illustration prompts are provided directly
+to the user (self-contained, style-locked text) for manual generation
+outside this session; resulting images are shared back and placed by
+Asset ID/fileName. prompts/assets.json's `sourceMethod` field records
+"unsplash" vs "chatgpt-manual" per asset; Asset_Register_v1.0.xlsx's
+Source column reflects the same split.
+
+023 SUPERSEDES the Unsplash portion of 021/022. A001, A002, B003,
+SB001 generated successfully via manual ChatGPT prompts (2026-08-06)
+and landed in assets/images/ as .webp; the remaining 18 assets switch
+from Unsplash+overlay back to ChatGPT-manual generation as well, for
+workflow consistency (single sourcing method, one handoff batch)
+rather than maintaining two pipelines. Full illustration prompts for
+all 18 (previously drafted for Gemini/Unsplash-overlay use) are
+repackaged as prompts/remaining_18_prompts.md and handed to the user
+as a zip for manual generation outside this session, matching the
+A001/A002/B003/SB001 workflow. Unsplash integration (scripts, API
+keys) is left in place but unused — no code deleted, in case a hybrid
+approach is wanted again later. Asset_Register_v1.0.xlsx Source
+column and prompts/assets.json's sourceMethod field updated to
+"ChatGPT (manual)" / "chatgpt-manual" for all 22 rows.

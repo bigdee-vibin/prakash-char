@@ -14,7 +14,9 @@ Your objective is to autonomously build the complete offline training experience
 - No external dependencies
 
 ## Build-time Tools
-- OpenAI Images API (latest available model)
+- Manual ChatGPT image generation — current sourcing method for all 22 concept-art assets (DECISIONS.md #023); prompts in prompts/assets.json and prompts/remaining_18_prompts.md
+- Gemini API — Imagen / native image generation, built but on hold pending billing (DECISIONS.md #020, #021)
+- Unsplash API — stock photo + CSS/SVG overlay approach, explored but not built (DECISIONS.md #021, #022, superseded by #023)
 - Firecrawl
 - Python
 - FFmpeg
