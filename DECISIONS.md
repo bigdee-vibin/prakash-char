@@ -35,3 +35,10 @@ which is left as-authored for historical record. HACK METH prevails
 because it matches the Asset Register (C005, EN002) and existing
 concept art; it still names/teases the next module's destination and
 is never entered in this build.
+
+013 The "Mission Brief" scene (between Decision and Debrief) reuses
+asset EX001 ("Mission Control"), repurposed from its original
+Exercise/Segment-8 categorisation (out of scope, DECISIONS.md #008) to
+this in-scope wrap scene. EX002 ("Apex Dossier") is NOT repurposed and
+stays tied to the out-of-scope air-gapped exercise. Asset_Register_v1.0.xlsx
+updated accordingly.

@@ -157,7 +157,7 @@ Mission Board rooms (Foundations through GoPhish) are non-linear/click-order-fre
 
 ### Scene 6 — Mission Brief
 - **Type:** linear-scene · **Position:** between Decision and Debrief (new scene, no direct pptx slide source)
-- **Candidate asset:** `EX001` Mission Control ("Apex briefing") — **flagged for reconciliation**, see §3.3: this row is currently categorized "Exercise" in the Asset Register, associated with Segment 8 (the air-gapped exercise, out of scope per SRS §6.1). Needs a decision on whether this asset is repurposed for this scene or a new one is registered.
+- **Asset:** `EX001` Mission Control — **resolved 2026-08-06 (DECISIONS.md #013): reused**, repurposed from its original Exercise/Segment-8 categorization to this in-scope wrap scene. Asset_Register_v1.0.xlsx updated (category → "Mission Brief," description/notes reflect the reuse). `EX002` ("Apex Dossier") is **not** repurposed — it stays with the out-of-scope air-gapped exercise.
 - **Function:** TBD content — likely a short wrap framing the trainee's mission as complete before Debrief. Content authoring deferred to Milestone 2.
 
 ### Scene 7 — Debrief
@@ -186,8 +186,8 @@ The four peripheral-monitor loops (Python, Networking, PowerShell, Bash — brie
 ### 3.2 "RED TEAM OPS" vs. "HACK METH" signage — RESOLVED 2026-08-06
 **HACK METH prevails** (DECISIONS.md #012). The written brief's "RED TEAM OPS" wording is superseded; `docs/OSINT_Hotel_Scrollytelling_Brief.md` itself is left unedited as the historical/as-authored record, but every other spec document and all future asset generation use "HACK METH," matching the Asset Register (`C005`, `EN002`) and existing concept art. The sign still names/teases the next module's destination (IW/HAK/15.4) and is never entered in this build — only the label text changed.
 
-### 3.3 "Mission Brief" scene — asset and content ambiguity
-`EX001` ("Mission Control") and `EX002` ("Apex Dossier") are registered under category "Exercise," which — per SRS §6.1 — maps to Segment 8 (the air-gapped exercise, explicitly out of scope for the web build; live/air-gapped only). The new "Mission Brief" scene in the frozen order has no clear source slide or confirmed asset. Needs a decision: reuse `EX001` for this narrative beat (renaming its register purpose), or register a new asset, or fold "Mission Brief" content into the adjacent Decision/Debrief scenes instead of standing alone.
+### 3.3 "Mission Brief" scene — RESOLVED 2026-08-06
+`EX001` ("Mission Control") is reused for this scene (DECISIONS.md #013); `EX002` ("Apex Dossier") remains tied to the out-of-scope Segment-8 exercise. See Scene 6 above. Content authoring for this beat is still deferred to Milestone 2 — no source slide backs it, so wording needs to be authored fresh, consistent with Creative Bible §6's fidelity rule wherever it touches material also covered by the deck.
 
 ### 3.4 UI chrome components not yet scene-mapped
 `UI001` Mission Log, `UI002` Notebook, `UI003` Evidence Card are registered as reusable HUD/widget assets but aren't tied to specific scenes in this bible — they're persistent chrome likely available across some or all narrative rooms (per Component Specification, C-7 Case Study Card is related but distinct). Which rooms use which widgets is deferred to Milestone 3 component wiring, not blocking this milestone.
