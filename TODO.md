@@ -7,7 +7,7 @@
 ## M0 — Repository hygiene
 - [x] Commit pending reorganization (assets/, docs/, ppt/, .gitignore, requirements.txt) — committed in Milestone 1
 - [x] Add .env.example — done 2026-08-06 (UNSPLASH_*, GEMINI_API_KEY, OPENAI_API_KEY, FIRECRAWL_API_KEY)
-- [ ] Expand README.md with setup/run instructions
+- [x] Expand README.md with setup/run instructions — done 2026-08-06
 
 ## M1 — Software specification (complete — 2026-08-06)
 - [x] SRS — [docs/SRS.md](docs/SRS.md)
