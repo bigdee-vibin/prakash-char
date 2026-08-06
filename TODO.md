@@ -33,10 +33,17 @@
 ## M2 — Prompt library & asset generation
 - [x] Build prompts/ library (style-lock preamble + per-asset prompts) — [prompts/style_lock.md](prompts/style_lock.md), [prompts/assets.json](prompts/assets.json)
 - [x] Sourcing method decided: ChatGPT manual generation for all 22 image assets (DECISIONS.md #020–#023; Gemini/Imagen and Unsplash paths built but unused — left in place, not deleted)
-- [x] 22/22 image-generation assets done → `assets/images/*.webp` (6.8MB total, all status `Draft` pending final review, DECISIONS.md #023)
 - [x] Source 2 CC0 audio loops — done 2026-08-06 (DECISIONS.md #024): `assets/audio/rain.ogg` (freesound.org/s/242889, CC0, 48s) and `assets/audio/ops.ogg` (freesound.org/s/715475, CC0, 1:42)
+- [x] Quality review of all 22 generated images — 2026-08-06 (DECISIONS.md #025). Found real problems, not cosmetic. Mislabeling fixed mechanically; content/policy issues need your call.
+- [x] 20/22 placed in `assets/images/*.webp` (GD001 re-sent and placed 2026-08-06, but flagged — see below)
+- [ ] 2/22 still need regeneration (previous files moved to `images/_rejected/`, Asset Register reverted to "To Generate"):
+  - **DB001** (Mission Debrief) — real content never generated (file was "Dark Web Investigations Room," not Mission Debrief, matches no Version-1 room)
+  - **EN002** (HACK METH Reveal) — resent 2026-08-06, still rendered "RED TEAM OPS" signage, violates DECISIONS.md #012 — re-flagged, moved to `images/_rejected/` again
+- [ ] **Decision needed — GD001 (Google Dorking):** re-sent and placed, but bakes in a fully simulated dork query + 10 fake result URLs — same #007/SRS FR-18 violation as the terminal-room trio below.
+- [ ] **Decision needed — D003 (Mission Board):** bakes in all 22 concept-art keys as fully unlocked/labeled, including "MISSION DEBRIEF" and "CHECK-OUT" as hub entries — violates #011 (locked-placeholder requirement) and the Scene Bible. Regenerate with only 9 active keys + inert locked placeholders, or accept as reference art and rebuild the key state in HTML/CSS at Milestone 3 (labels/lock-state never baked into the image in the first place)?
+- [ ] **Decision needed — SG001 (SignalGate) / FC001 (Fiery Cross Reef):** both bake in fabricated specifics not in the source deck (dramatized "targets confirmed / time to execute" chat text; an invented date/coordinates) — Creative Bible §4 fidelity/sensitivity concern for real, sensitive incidents. Regenerate with less invented specificity, or accept as atmospheric/non-literal?
+- [ ] **Decision needed — TC001 / ST001 / GP001 / GD001 (all 4 terminal rooms):** all bake in full simulated tool output (theHarvester/Sherlock/SpiderFoot text, a SET menu, a populated GoPhish dashboard, a dork query + results) — violates #007/SRS FR-18's explicit "no simulated tool output" rule. Regenerate with idle/blank screens, or crop/edit the existing art to blank the screens before use?
 - [ ] Remaining 13 Asset Register rows (F002, SG002, FC002, EX001, EX002, DD001, UI001-UI003, EE001-EE004) are HTML/SVG/CSS build-time components, not image-generated — deferred to Milestone 3, not a Milestone 2 gap
-- [ ] All 22 `Draft` images pending final review/approval before moving to `Ready`
 
 ## M3 — HTML engine build
 - [ ] Implement schemas as `schemas/*.schema.json` (drafted in Architecture.md §5)

@@ -127,7 +127,7 @@
     "size": "1536x1024",
     "sourceMethod": "chatgpt-manual",
     "prompt": "Bare wooden desk with a single glowing CRT-style terminal monitor showing an idle command prompt with a generic blinking cursor (no readable real command output), an empty chair pulled out, an isolated pool of monitor light in an otherwise dark room, a waiting and expectant mood.",
-    "status": "generated-2026-08-06"
+    "status": "generated-2026-08-06-flagged"
   },
   {
     "assetId": "TC001",
@@ -182,7 +182,7 @@
     "size": "1536x1024",
     "sourceMethod": "chatgpt-manual",
     "prompt": "Quiet debrief room, a round table with two facing empty chairs, a wall display showing a faint abstract summary graphic with no readable text, warm contemplative lighting mixed with cool cyan accents, a reflective and calm mood.",
-    "status": "generated-2026-08-06"
+    "status": "pending-manual-generation"
   },
   {
     "assetId": "EN001",
@@ -202,6 +202,6 @@
     "notes": "Signage text is canonical per DECISIONS.md #012.",
     "sourceMethod": "chatgpt-manual",
     "prompt": "Close-up night composition of the glowing magenta neon 'HACK METH' sign now large and fully legible, camera stopped just short of the building's door, dramatic close framing, rain and neon reflections, moody cliffhanger atmosphere, fading toward black at the frame edges.",
-    "status": "generated-2026-08-06"
+    "status": "pending-manual-generation"
   }
 ]

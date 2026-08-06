@@ -162,3 +162,40 @@ no stable direct file URL); Freesound's CDN serves preview files
 directly and its license is genuinely CC0 (matching the Asset
 Register's stated requirement exactly, unlike Pixabay's merely
 similar Content License).
+
+025 Quality review of the 22 generated concept-art images (2026-08-06)
+found real problems, not just cosmetic ones. Mechanical mislabeling
+fixed directly (no creative judgment needed): GD001's file actually
+contained Grey Areas content, remapped to GA001; the file that had
+been under GA001 (a Tool-Shed variant matching no defined room) and
+the files under DB001 ("Dark Web Investigations Room," not Mission
+Debrief) and EN002 (rendered "RED TEAM OPS" signage, violating #012)
+were moved to images/_rejected/ and their Asset Register rows reverted
+to "To Generate." Net: GD001, DB001, EN002 still need real generation;
+19/22 correctly placed.
+
+Content/policy issues found that are NOT auto-fixed, pending a product
+decision (tracked in TODO.md):
+- D003 (Mission Board): bakes in all 22 concept-art keys as fully
+  labeled, unlocked brass keys, including "MISSION DEBRIEF" and
+  "CHECK-OUT" as hub entries -- violates #011 (locked/inert placeholder
+  requirement) and the Scene Bible (those two are linear post-hub
+  scenes, not hub rooms).
+- SG001 (SignalGate): bakes in fabricated, dramatized operational chat
+  content ("Targets confirmed," "Time to execute," "Discussing
+  strikes") not present in the source deck -- violates Creative Bible
+  §4's fidelity/sensitivity rules for a real, sensitive incident.
+- FC001 (Fiery Cross Reef): bakes in a fabricated specific date/
+  timestamp/coordinates not sourced from the deck -- same §4 concern.
+- TC001, ST001, GP001, GD001 (all 4 terminal rooms): all render full,
+  realistic simulated tool output/dashboards (theHarvester/Sherlock/
+  SpiderFoot terminal text, a full SET menu, a populated GoPhish
+  dashboard with fake metrics, a dork query + 10 fake result URLs)
+  baked into the image -- violates #007/SRS FR-18's explicit "must not
+  simulate real tool output" rule, which exists specifically so the web
+  experience doesn't undercut the real live demo. (GD001 was re-sent
+  2026-08-06 after the mislabeling fix and has this same issue.)
+
+EN002 was re-sent 2026-08-06 and still rendered "RED TEAM OPS" instead
+of "HACK METH" -- moved to images/_rejected/ again, still needs
+regeneration with corrected signage text.
