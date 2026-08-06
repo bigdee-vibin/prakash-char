@@ -40,9 +40,10 @@ body{position:relative;}
 #pc-chrome button:hover{border-color:var(--pc-grid-cyan);}
 
 /* ===== LINEAR SCROLL SEQUENCE ===== */
-#pc-linear{height:100%;overflow-y:scroll;scroll-snap-type:y mandatory;}
-.pc-scene{height:100%;width:100%;scroll-snap-align:start;position:relative;display:flex;align-items:flex-end;
-  background-size:cover;background-position:center;}
+#pc-linear{height:100%;overflow-y:scroll;scroll-snap-type:y proximity;scroll-behavior:smooth;}
+.pc-scene{height:100%;width:100%;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:flex-end;
+  background-size:cover;background-position:center;opacity:.35;transition:opacity .5s ease-out;}
+.pc-scene.pc-in-view{opacity:1;}
 .pc-scene::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75),rgba(0,0,0,.15) 45%,rgba(0,0,0,.35));}
 .pc-scene-body{position:relative;z-index:2;padding:48px 56px;max-width:820px;}
 .pc-scene-eyebrow{font-family:var(--mono);font-size:12px;color:var(--pc-grid-cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
@@ -158,7 +159,7 @@ body{position:relative;}
 
 var LINEAR_PRE = [
   {
-    id:"cold-open", bg:"assets/images/A001_mission_splash.webp", eyebrow:"IW/HAK/15.3 · OSINT & Social Engineering",
+    id:"cold-open", bg:"assets/images/A001_mission_splash.webp", eyebrow:"",
     title:"Prakāśa-chara", copy:"In Plain Sight.", cta:"Begin", audio:null
   },
   {
@@ -183,8 +184,8 @@ var LINEAR_PRE = [
   },
   {
     id:"reception-turn", bg:"assets/images/C004_osint_hq.webp", eyebrow:"Scene 4",
-    title:"The Turn — OSINT Hotel", copy:"A door, off the main lane. The sign above it reads OSINT.",
-    cta:"Enter the Hotel", audio:"rain"
+    title:"The Turn", copy:"A door, off the main lane. The sign above it reads OSINT.",
+    cta:"Enter", audio:"rain"
   }
 ];
 
@@ -292,9 +293,34 @@ var audioOps = document.getElementById("pc-audio-ops");
 var muted = false;
 
 /* ============ AUDIO CONTROLLER (C-11) ============ */
+/* Subtle by design: low volume + a gentle low-pass filter so loops read as
+   distant/ambient rather than raw source recordings. */
+var audioCtx = null, filterNodes = {};
+function setupAudioGraph(){
+  if (audioCtx) return;
+  try {
+    var Ctx = window.AudioContext || window.webkitAudioContext;
+    audioCtx = new Ctx();
+    [["rain", audioRain], ["ops", audioOps]].forEach(function(pair){
+      var src = audioCtx.createMediaElementSource(pair[1]);
+      var filter = audioCtx.createBiquadFilter();
+      filter.type = "lowpass";
+      filter.frequency.value = 1400;
+      var gain = audioCtx.createGain();
+      gain.gain.value = .22;
+      src.connect(filter).connect(gain).connect(audioCtx.destination);
+      filterNodes[pair[0]] = true;
+    });
+  } catch (e) { /* Web Audio unavailable -- falls back to plain <audio> volume below */ }
+}
+audioRain.volume = .22;
+audioOps.volume = .22;
+
 function playLoop(which){
   [audioRain, audioOps].forEach(function(a){ a.pause(); });
   if (muted || !which) return;
+  setupAudioGraph();
+  if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
   var el = which === "rain" ? audioRain : audioOps;
   var p = el.play();
   if (p && p.catch) p.catch(function(){ /* autoplay blocked -- fail silently, NFR-6 */ });
@@ -353,18 +379,20 @@ function renderLinear(list, onDone){
   var sections = linearEl.querySelectorAll(".pc-scene");
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(en){
-      if (en.isIntersecting){
+      en.target.classList.toggle("pc-in-view", en.isIntersecting && en.intersectionRatio > .6);
+      if (en.isIntersecting && en.intersectionRatio > .6){
         var idx = Array.prototype.indexOf.call(sections, en.target);
         var s = list[idx];
         if (s && s.audio !== undefined) playLoop(s.audio);
         progressEl.textContent = "Scene " + (idx+1) + " / " + list.length;
       }
     });
-  }, {threshold:.6});
+  }, {threshold:[0,.6,1]});
   sections.forEach(function(s){ io.observe(s); });
 
   linearEl.style.display = "block";
   linearEl.scrollTop = 0;
+  if (sections[0]) sections[0].classList.add("pc-in-view");
 }
 
 /* ============ MISSION BOARD HUB (C-4) ============ */

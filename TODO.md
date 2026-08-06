@@ -58,10 +58,19 @@
 - [ ] Camera transitions (Scene 2 zoom, Scene 4 rotate) implemented as scroll-snap + fade rather than the CSS 3D transforms Architecture §11 flagged as unvalidated — reliability chosen over full visual fidelity
 - [ ] The 4 backlog image issues (D003, DB001, GD001, terminal-room simulated output) are now live in the running experience — see below
 
-## M4 — Documentation deliverables
-- [ ] Generate speaker notes
-- [ ] Generate instructor guides
-- [ ] Document build scripts
+## M4 — Documentation deliverables (complete — 2026-08-06)
+- [x] Speaker notes — [docs/Speaker_Notes.md](docs/Speaker_Notes.md)
+- [x] Instructor guide — [docs/Instructor_Guide.md](docs/Instructor_Guide.md) (setup, session flow, all 4 demo-handoff pre-staging steps, troubleshooting, known display caveats)
+- [x] Build scripts documented — [scripts/README.md](scripts/README.md)
+
+### Also fixed during this pass (not milestone-scoped, found via use)
+- [x] Removed redundant eyebrow text from Cold Open title card
+- [x] Simplified "The Turn — OSINT Hotel" / "Enter the Hotel" to "The Turn" / "Enter"
+- [x] Scroll feel: switched hard `mandatory` snap to `proximity` + cross-fade between scenes (was jerky)
+- [x] Audio: added a low-pass filter + reduced volume (was harsh) so ambient loops read as subtle/distant rather than raw recordings
+
+## M5 — Packaging & release (complete — 2026-08-06)
+- [x] `scripts/package_release.py` built and run — copies `index.html` + `assets/images/` + `assets/audio/` into `release/`, verifies zero `http(s)://` refs and that every asset path resolves, zips to `Prakasha-chara_v1.0.zip` (8.8MB, well under the 150MB budget)
 
 ## M5 — Packaging & release
 - [ ] Package release (release ZIP + build scripts)
