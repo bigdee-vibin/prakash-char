@@ -147,7 +147,7 @@ None. The product has no APIs, no persistence beyond in-memory session state, an
 | 6 | Case Study — SignalGate | Room 6b (SignalGate Suite) | Narrative |
 | 7 | Case Study — Fiery Cross Reef | Room 6c (Fiery Cross Reef Suite) | Narrative |
 | 8–10 | Segment 2 — Google Dorking | Room 7a (Terminal — Dorking) | Demo-pause only |
-| 11–13 | Segment 3 — OSINT Tool Chain (incl. "Where AI Fits In OSINT Now") | Room 7b (Terminal — Tool Chain) | Demo-pause only; slide 13's AI-in-OSINT content is **not currently placed** — open item, see §8 |
+| 11–13 | Segment 3 — OSINT Tool Chain (incl. "Where AI Fits In OSINT Now") | Room 7b (Terminal — Tool Chain) | Demo-pause room (slides 11–12); slide 13 ("Where AI Fits In OSINT Now") renders as a narrative lead-in within the same room, before the Pause-for-Demo interstitial (DECISIONS.md #014) |
 | 14–16 | Segment 4 — Grey Areas & Legal (incl. Gulf Censorship case study) | Room 6d (Grey Areas Room) | Narrative |
 | 17–19 | Segment 5 — SE Bridge | Room 6e (The Bridge) | Narrative |
 | 20–21 | Segment 6 — SET Walkthrough | Room 7c (Terminal — SET) | Demo-pause only |
@@ -157,7 +157,7 @@ None. The product has no APIs, no persistence beyond in-memory session state, an
 | 27 | Debrief | Scene "Debrief" (post-Mission Brief) | Narrative — see Scene Bible |
 
 ### 6.2 Traceability note
-Slide 13 (Where AI Fits In OSINT Now) is still **not addressed by the existing scrollytelling brief** and has no assigned scene — flagged as a remaining open item, §8. Slides 26 (Decision Dilemma) and 27 (Debrief) are now resolved: placed as their own scenes per the frozen Scene Bible order (2026-08-06 product decision, recorded as DECISIONS.md #008–#011), with a new "Mission Brief" scene inserted between GoPhish/Decision and Debrief.
+All three previously-unplaced slides are now resolved (2026-08-06). Slide 13 (Where AI Fits In OSINT Now) renders as a narrative lead-in inside Room 7b, ahead of that room's Pause-for-Demo interstitial (DECISIONS.md #014) — it does not get its own scene. Slides 26 (Decision Dilemma) and 27 (Debrief) are placed as their own scenes per the frozen Scene Bible order (DECISIONS.md #008–#011), with a new "Mission Brief" scene inserted between GoPhish/Decision and Debrief.
 
 ### 6.3 `ppt/04 OSINT 1.pptx` — resolved: reference deck only, not in scope
 **Resolved 2026-08-06 (DECISIONS.md #009).** This separate, 23-slide deck ("Class 4 of 6," Information Warfare School, "Cyber Crime & Autonomous Threats") — with different framing, a fictional composite case subject ("Hav. [X]," a training persona per Creative Bible §4.5), and different demos (EXIF/GeoSpy, Strava/IDF, Red Flag Drill) — is confirmed as **reference material only** for Version 1: it may inform explanations, examples, or future artwork, but supplies no scenes, rooms, or content in this build. It is not mapped into the Scene Bible. Any future use of this deck's content is a separate, deliberate scope decision (e.g. a later mission/module), not an extension of this one.
@@ -182,10 +182,10 @@ Per `PROJECT.md`, the build is done when:
 2. ~~Slides 26, 27 placement~~ — **Resolved: placed as "Decision" and "Debrief" scenes**, with a new "Mission Brief" scene between them (§6.1, §3.3).
 3. ~~Key Wall scope~~ — **Resolved: renamed "Mission Board"; scope fixed at the 9 Version-1 rooms; additional concept-art rooms become locked/"Coming Soon" placeholders only** (§3.2, DECISIONS.md #011).
 4. ~~SignalGate/Fiery Cross Reef merge~~ — **Resolved: stay two separate rooms** (DECISIONS.md #010).
+5. ~~Slide 13 placement~~ — **Resolved: narrative lead-in inside Room 7b (OSINT Tool Chain), before the Pause-for-Demo interstitial** (DECISIONS.md #014).
 
 ### 8.2 Still open
-1. **Slide 13 placement** ("Where AI Fits In OSINT Now") — no scene assigned yet; candidate for folding into the OSINT Tool Chain terminal room's narrative lead-in, or remains instructor-only. Needs a decision before Milestone 2 content-authoring.
-2. **Minimum hardware spec** for NFR-4/NFR-5 (training-room laptop baseline) — needed to set realistic performance and size budgets.
-3. **Audio requirement firmness** — brief lists rain/ops loops as "High" priority in the Asset Register; confirm whether audio is required-by-launch or a nice-to-have given NFR-6's graceful-degradation requirement.
+1. **Minimum hardware spec** for NFR-4/NFR-5 (training-room laptop baseline) — needed to set realistic performance and size budgets.
+2. **Audio requirement firmness** — brief lists rain/ops loops as "High" priority in the Asset Register; confirm whether audio is required-by-launch or a nice-to-have given NFR-6's graceful-degradation requirement.
 
 These are also tracked in [Repository_Audit.md](Repository_Audit.md) §9 and reflected in [TODO.md](../TODO.md).

@@ -128,7 +128,8 @@ Mission Board rooms (Foundations through GoPhish) are non-linear/click-order-fre
 
 ### Room 7b — OSINT Tool Chain (terminal)
 - **Type:** terminal-room · **Key:** TOOL_CHAIN
-- **Source slides:** `OSINT SE Session.pptx` #11–12 (Segment 3). **Slide 13 ("Where AI Fits In OSINT Now") remains unplaced** — SRS §8.2 open item; candidate for a short narrative lead-in here before the terminal transition, not yet decided.
+- **Source slides:** `OSINT SE Session.pptx` #11–13 (Segment 3, including "Where AI Fits In OSINT Now")
+- **Content beat (pre-interstitial):** slide 13's content — AI-powered correlation engines auto-connecting related data points ("faster triage, not better judgment"); NLP-based extraction/enrichment; the hallucination risk requiring manual verification; the growing difficulty distinguishing authentic from AI-fabricated visual evidence — renders as a short narrative lead-in **before** the room transitions to the Pause-for-Demo interstitial (DECISIONS.md #014). It does not get its own scene/room.
 - **Handoff text:** `>> LIVE DEMO — see instructor workstation`
 - **Target setup:** "Instructor laptop — theHarvester → Sherlock → SpiderFoot, real internet"
 - **Asset:** `TC001` Tool Chain.
@@ -192,5 +193,5 @@ The four peripheral-monitor loops (Python, Networking, PowerShell, Bash — brie
 ### 3.4 UI chrome components not yet scene-mapped
 `UI001` Mission Log, `UI002` Notebook, `UI003` Evidence Card are registered as reusable HUD/widget assets but aren't tied to specific scenes in this bible — they're persistent chrome likely available across some or all narrative rooms (per Component Specification, C-7 Case Study Card is related but distinct). Which rooms use which widgets is deferred to Milestone 3 component wiring, not blocking this milestone.
 
-### 3.5 Slide 13 placement (carried from SRS §8.2)
-"Where AI Fits In OSINT Now" has no confirmed home; §Room 7b above proposes a narrative lead-in as one option, not yet decided.
+### 3.5 Slide 13 placement — RESOLVED 2026-08-06
+"Where AI Fits In OSINT Now" renders as a narrative lead-in inside Room 7b (OSINT Tool Chain), before the Pause-for-Demo interstitial (DECISIONS.md #014). See Room 7b above.

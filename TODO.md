@@ -24,7 +24,7 @@
 ### Open decisions before Milestone 2 (see SRS §8.2, Scene Bible §3)
 - [x] "RED TEAM OPS" (brief) vs. "HACK METH" (Asset Register / concept art) — **resolved 2026-08-06: HACK METH prevails** (DECISIONS.md #012)
 - [x] "Mission Brief" scene asset — **resolved 2026-08-06: EX001 reused**, EX002 stays out-of-scope (DECISIONS.md #013)
-- [ ] Slide 13 ("Where AI Fits In OSINT Now") placement — no scene assigned yet
+- [x] Slide 13 ("Where AI Fits In OSINT Now") placement — **resolved 2026-08-06: narrative lead-in inside Room 7b (OSINT Tool Chain), before the Pause-for-Demo interstitial** (DECISIONS.md #014)
 - [ ] Easter Egg Wall assets (Python/Networking/PowerShell/Bash monitor loops) — not yet rows in the Asset Register
 - [ ] Minimum hardware spec (training-room baseline) — needed for performance/size budgets
 - [ ] Audio requirement firmness (required-by-launch vs. nice-to-have)

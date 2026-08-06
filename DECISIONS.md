@@ -42,3 +42,12 @@ Exercise/Segment-8 categorisation (out of scope, DECISIONS.md #008) to
 this in-scope wrap scene. EX002 ("Apex Dossier") is NOT repurposed and
 stays tied to the out-of-scope air-gapped exercise. Asset_Register_v1.0.xlsx
 updated accordingly.
+
+014 Slide 13 ("Where AI Fits In OSINT Now," OSINT SE Session.pptx) is
+placed as a narrative lead-in inside Room 7b — OSINT Tool Chain —
+rendered before that room transitions to its Pause-for-Demo
+interstitial. It does not get its own scene/room. Rationale: same
+source segment (3) as the theHarvester/Sherlock/SpiderFoot demo it
+already precedes in the deck; thematically continuous (AI-assisted
+correlation/enrichment tooling feeds directly into the tool-chain
+demo the room hands off to).
