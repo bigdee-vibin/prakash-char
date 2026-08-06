@@ -33,8 +33,8 @@
 ## M2 — Prompt library & asset generation
 - [x] Build prompts/ library (style-lock preamble + per-asset prompts) — [prompts/style_lock.md](prompts/style_lock.md), [prompts/assets.json](prompts/assets.json)
 - [x] Sourcing method decided: ChatGPT manual generation for all 22 image assets (DECISIONS.md #020–#023; Gemini/Imagen and Unsplash paths built but unused — left in place, not deleted)
-- [x] 18/22 generated and placed → `assets/images/*.webp`: A001, A002, B001, B002, B003, C001, C004, C005, D001, D003, F001, FC001, GA001, GD001, SB001, SG001, ST001, TC001
-- [ ] 4/22 pending: GP001, DB001, EN001, EN002 — prompts in [prompts/remaining_18_prompts.md](prompts/remaining_18_prompts.md), zipped and sent 2026-08-06
+- [x] 21/22 generated and placed → `assets/images/*.webp`: A001, A002, B001, B002, B003, C001, C004, C005, D001, D003, DB001, F001, FC001, GA001, GD001, GP001, SB001, SG001, ST001, TC001, EN002
+- [ ] 1/22 pending: EN001 (Lane Return) — prompt in [prompts/remaining_18_prompts.md](prompts/remaining_18_prompts.md)
 - [ ] Remaining Easter Egg Wall assets (EE001-EE004, HTML/CSS) — build-time, not image-generated, deferred to Milestone 3
 - [x] Source 2 CC0 audio loops — done 2026-08-06 (DECISIONS.md #024): `assets/audio/rain.ogg` (freesound.org/s/242889, CC0, 48s) and `assets/audio/ops.ogg` (freesound.org/s/715475, CC0, 1:42)
 
