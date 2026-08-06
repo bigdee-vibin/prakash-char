@@ -121,8 +121,8 @@ A standalone artifact, not a service. It has no backend, no network calls at run
 | NFR-1 (Offline) | Zero runtime network requests. Verifiable by loading `index.html` with networking disabled and confirming full functionality. |
 | NFR-2 (Portability) | Runs from the local filesystem via `file://` with no local server required. (This has architectural consequences — see [Architecture.md](Architecture.md) §2.) |
 | NFR-3 (Self-contained) | All fonts, images, audio, and scripts ship inside the release artifact; no CDN references of any kind. |
-| NFR-4 (Performance) | Initial load-to-interactive under 5 seconds on typical training-room hardware (no defined minimum spec yet — flagged as an open item, §8). Scroll/transition animation SHALL target 60fps on the same hardware class. |
-| NFR-5 (Size budget) | Final release artifact SHOULD stay under a size budget to be fixed during Architecture (target proposed: ≤150 MB total, given ~30 images + 2 audio loops); see [Architecture.md](Architecture.md) §8. |
+| NFR-4 (Performance) | Initial load-to-interactive under 5 seconds on the confirmed training-room baseline (DECISIONS.md #016: dual-core ~2.0GHz+, 8GB RAM, integrated graphics, 1280x800 min., evergreen browser). Scroll/transition animation SHALL target 60fps on that same baseline. |
+| NFR-5 (Size budget) | Final release artifact SHALL stay ≤150 MB total (DECISIONS.md #017), covering ~33 registered visual assets (.webp) plus 2 ambient audio loops (.ogg); see [Architecture.md](Architecture.md) §8. |
 | NFR-6 (Resilience) | No single missing/blocked asset (e.g., blocked autoplay) SHALL produce a JS error that halts the experience; failures degrade gracefully. |
 | NFR-7 (Accessibility, baseline) | Text content SHALL meet WCAG AA contrast against its background per the palette in [UI_Style_Guide.md](UI_Style_Guide.md); `prefers-reduced-motion` SHALL be respected by disabling non-essential scroll-linked animation intensity. |
 | NFR-8 (Browser compatibility) | Functions correctly on the last 2 major versions of Chrome, Firefox, Edge, and Safari (desktop). No IE11 support. |
@@ -183,9 +183,12 @@ Per `PROJECT.md`, the build is done when:
 3. ~~Key Wall scope~~ — **Resolved: renamed "Mission Board"; scope fixed at the 9 Version-1 rooms; additional concept-art rooms become locked/"Coming Soon" placeholders only** (§3.2, DECISIONS.md #011).
 4. ~~SignalGate/Fiery Cross Reef merge~~ — **Resolved: stay two separate rooms** (DECISIONS.md #010).
 5. ~~Slide 13 placement~~ — **Resolved: narrative lead-in inside Room 7b (OSINT Tool Chain), before the Pause-for-Demo interstitial** (DECISIONS.md #014).
+6. ~~Minimum hardware spec~~ — **Resolved: dual-core ~2.0GHz+, 8GB RAM, integrated graphics, 1280x800 min., evergreen browser** (DECISIONS.md #016). Size budget confirmed at ≤150MB (DECISIONS.md #017).
+7. ~~Audio requirement firmness~~ — **Resolved: required to ship (stays High priority), but failure to play (blocked autoplay, no audio device) remains non-blocking per NFR-6** (DECISIONS.md #018).
+8. ~~Cold Open / Operations Centre split~~ — **Resolved: confirmed as interpreted in Scene_Bible.md §2.1** (DECISIONS.md #019).
+9. ~~Easter Egg Wall assets~~ — **Resolved: registered as EE001–EE004 in Asset_Register_v1.0.xlsx** (DECISIONS.md #015).
 
 ### 8.2 Still open
-1. **Minimum hardware spec** for NFR-4/NFR-5 (training-room laptop baseline) — needed to set realistic performance and size budgets.
-2. **Audio requirement firmness** — brief lists rain/ops loops as "High" priority in the Asset Register; confirm whether audio is required-by-launch or a nice-to-have given NFR-6's graceful-degradation requirement.
+None remaining from this milestone's review. Any new open items surface during Milestone 2 (asset generation) or Milestone 3 (build) will be added here.
 
 These are also tracked in [Repository_Audit.md](Repository_Audit.md) §9 and reflected in [TODO.md](../TODO.md).

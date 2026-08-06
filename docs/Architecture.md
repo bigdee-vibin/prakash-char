@@ -237,7 +237,7 @@ Rendering approach: plain DOM + CSS transitions/animations (transform, opacity) 
 
 ## 8. Asset Optimization Budget
 
-No hardware/size budget is fixed yet (SRS §8, open item 3). Proposed working target, to confirm at Milestone 2: **≤150 MB total release folder** — roughly 30 `.webp` images at ~2–4 MB each pre-optimization budget (register specifies `.webp`, which typically halves PNG size at comparable quality) plus 2 short `.ogg` ambient loops (a looped ambient bed rarely needs to exceed a few MB). This is a proposal for sign-off, not a locked constraint.
+**Confirmed (DECISIONS.md #016–#017):** minimum hardware baseline is a training-room laptop with a dual-core ~2.0GHz+ CPU, 8GB RAM, integrated graphics, 1280x800 minimum display, evergreen browser on Windows 10/11 or equivalent. Release artifact size budget is **≤150 MB total** — roughly 33 registered `.webp` images at ~2–4 MB each pre-optimization budget (register specifies `.webp`, which typically halves PNG size at comparable quality) plus 2 short `.ogg` ambient loops (a looped ambient bed rarely needs to exceed a few MB).
 
 ## 9. Browser/Runtime Compatibility
 Target: last 2 major versions of Chrome, Firefox, Edge, Safari (desktop), per SRS NFR-8. No transpilation/polyfill build step is planned, since a network-connected build machine authors the JS directly against this modern baseline — CLAUDE.md's "vanilla JS only" already precludes framework polyfill layers.
@@ -247,5 +247,5 @@ Per Decision 006 and SRS FR-21: a fixed-position, low-opacity `<div>` (not an `<
 
 ## 11. Open Items Carried Forward
 1. Confirm whether `localStorage` use (e.g., to remember Mission Board progress across a reload mid-session) is desirable — not required by SRS, but low-cost if wanted; needs a decision before Milestone 3.
-2. Confirm the Scene 2 "zoom into the screen" and Scene 4 "camera rotation" transitions are achievable with CSS 3D transforms at acceptable performance on training-room hardware (NFR-4) — flagged as a technical risk to validate early in Milestone 3, not blocking this milestone.
-3. Size budget (§8) needs sign-off once real asset weights are known (Milestone 2).
+2. Confirm the Scene 2 "zoom into the screen" and Scene 4 "camera rotation" transitions are achievable with CSS 3D transforms at acceptable performance on the confirmed training-room baseline (DECISIONS.md #016) — flagged as a technical risk to validate early in Milestone 3, not blocking this milestone.
+3. ~~Size budget~~ — confirmed (DECISIONS.md #017); still worth a real-weight sanity check once Milestone 2 asset generation produces actual file sizes, but no longer an open spec question.

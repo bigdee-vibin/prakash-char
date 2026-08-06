@@ -21,20 +21,18 @@
 - [x] Resolved: SignalGate and Fiery Cross Reef stay separate rooms (DECISIONS.md #010)
 - [x] Resolved: Decision Dilemma (slide 26) and Debrief (slide 27) placed as their own scenes, with a new Mission Brief scene between them
 
-### Open decisions before Milestone 2 (see SRS §8.2, Scene Bible §3)
-- [x] "RED TEAM OPS" (brief) vs. "HACK METH" (Asset Register / concept art) — **resolved 2026-08-06: HACK METH prevails** (DECISIONS.md #012)
-- [x] "Mission Brief" scene asset — **resolved 2026-08-06: EX001 reused**, EX002 stays out-of-scope (DECISIONS.md #013)
-- [x] Slide 13 ("Where AI Fits In OSINT Now") placement — **resolved 2026-08-06: narrative lead-in inside Room 7b (OSINT Tool Chain), before the Pause-for-Demo interstitial** (DECISIONS.md #014)
-- [ ] Easter Egg Wall assets (Python/Networking/PowerShell/Bash monitor loops) — not yet rows in the Asset Register
-- [ ] Minimum hardware spec (training-room baseline) — needed for performance/size budgets
-- [ ] Audio requirement firmness (required-by-launch vs. nice-to-have)
-- [ ] Cold Open / Operations Centre split — confirm the Scene Bible §2.1 interpretation (new title-splash beat + reassigned dark-ops-room beat) is what was intended
+### Open decisions before Milestone 2 (see SRS §8.2, Scene Bible §3) — ALL RESOLVED 2026-08-06
+- [x] "RED TEAM OPS" (brief) vs. "HACK METH" (Asset Register / concept art) — **HACK METH prevails** (DECISIONS.md #012)
+- [x] "Mission Brief" scene asset — **EX001 reused**, EX002 stays out-of-scope (DECISIONS.md #013)
+- [x] Slide 13 ("Where AI Fits In OSINT Now") placement — **narrative lead-in inside Room 7b (OSINT Tool Chain), before the Pause-for-Demo interstitial** (DECISIONS.md #014)
+- [x] Easter Egg Wall assets — **registered as EE001–EE004**, category Cold Open, Medium priority, Source HTML/CSS (DECISIONS.md #015)
+- [x] Minimum hardware spec — **confirmed**: dual-core ~2.0GHz+, 8GB RAM, integrated graphics, 1280x800 min., evergreen browser (DECISIONS.md #016); size budget ≤150MB (DECISIONS.md #017)
+- [x] Audio requirement firmness — **required to ship** (stays High priority), but playback failure remains non-blocking per NFR-6 (DECISIONS.md #018)
+- [x] Cold Open / Operations Centre split — **confirmed** as Scene Bible §2.1 interpreted it (DECISIONS.md #019)
 
 ## M2 — Prompt library & asset generation
-- [ ] Resolve open decisions above (esp. signage naming — affects generated art)
 - [ ] Build prompts/ library (style-lock preamble + per-asset prompts)
-- [ ] Generate remaining artwork — 29 High-priority "To Generate" assets in Asset_Register_v1.0.xlsx
-- [ ] Register the 4 missing Easter Egg Wall assets + reconcile Mission Brief asset
+- [ ] Generate remaining artwork — 33 registered "To Generate" assets in Asset_Register_v1.0.xlsx (29 High + 4 Medium priority EE001-EE004)
 - [ ] Source 2 CC0 audio loops (rain.ogg, ops.ogg)
 
 ## M3 — HTML engine build

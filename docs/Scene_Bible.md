@@ -3,7 +3,7 @@
 
 **Version:** 1.0 (Milestone 1)
 **Date:** 2026-08-06
-**Status:** Draft — for review. Scene order and room set are **frozen** per the 2026-08-06 product decision (DECISIONS.md #008–#011); content details within each scene remain refinable in Milestone 2.
+**Status:** Draft — for review. Scene order and room set are **frozen** per the 2026-08-06 product decision (DECISIONS.md #008–#011, #014–#019); all naming/asset/placement flags raised during Milestone 1 are resolved. Content details within each scene remain refinable in Milestone 2.
 **Related:** [SRS.md](SRS.md) §6, [Creative_Bible.md](Creative_Bible.md), [Component_Specification.md](Component_Specification.md), [Asset_Register_v1.0.xlsx](Asset_Register_v1.0.xlsx)
 
 ---
@@ -47,7 +47,7 @@ Mission Board rooms (Foundations through GoPhish) are non-linear/click-order-fre
 - **Type:** linear-scene · **Interaction:** scroll = slow pan, left to right (SRS FR-2)
 - **Visual:** 4–5 peripheral monitors around a dim central monitor; each peripheral loops ambient footage referencing a prior course topic.
 - **Asset:** `B002` Monitor Wall (Cold Open category, To Generate, High priority).
-- **Easter Egg Wall assets (Python / Networking / PowerShell / Bash looping monitors):** **not currently rows in the Asset Register** — flagged gap, see §3.1.
+- **Easter Egg Wall assets (Python / Networking / PowerShell / Bash looping monitors):** `EE001`–`EE004` (registered 2026-08-06, DECISIONS.md #015 — see §3.1).
 - **Component:** C-12 Easter Egg Monitor (Component Specification).
 - **Audio:** `AU002` continues.
 
@@ -176,13 +176,13 @@ Mission Board rooms (Foundations through GoPhish) are non-linear/click-order-fre
 
 ## 2. Reconciliation Notes (Cold Open / Operations Centre split)
 
-### 2.1
-The original brief describes a single Scene 0 ("Cold Open — dark ops room, silhouette of operator") that the Asset Register also captures as a single row (`B001` Operations Centre). The 2026-08-06 frozen order names **two** sequential beats: "Cold Open" then "Operations Centre." This Scene Bible resolves that by treating "Cold Open" as a new, minimal title/splash beat (using `A001` Mission Splash) and reassigning the brief's original dark-ops-room description to "Operations Centre" (using `B001`). **This is an interpretation, not a confirmed decision** — flag for sign-off if a different split was intended.
+### 2.1 — RESOLVED 2026-08-06 (DECISIONS.md #019)
+The original brief describes a single Scene 0 ("Cold Open — dark ops room, silhouette of operator") that the Asset Register also captures as a single row (`B001` Operations Centre). The 2026-08-06 frozen order names **two** sequential beats: "Cold Open" then "Operations Centre." **Confirmed interpretation:** "Cold Open" is a new, minimal title/splash beat (using `A001` Mission Splash) and the brief's original dark-ops-room description carries over to "Operations Centre" (using `B001`).
 
 ## 3. Open Items / Flags Requiring a Decision
 
-### 3.1 Easter Egg Wall assets missing from the register
-The four peripheral-monitor loops (Python, Networking, PowerShell, Bash — brief §"Easter Egg Wall") have no corresponding Asset Register rows. Needs 4 new rows (or one combined asset) added at Milestone 2.
+### 3.1 Easter Egg Wall assets — RESOLVED 2026-08-06
+Registered as `EE001`–`EE004` (Python/Networking/PowerShell/Bash monitors), category "Cold Open," Medium priority, Source "HTML/CSS" (CSS-animated monospace text scroll rather than video/generated imagery, per Architecture.md C-12). See DECISIONS.md #015.
 
 ### 3.2 "RED TEAM OPS" vs. "HACK METH" signage — RESOLVED 2026-08-06
 **HACK METH prevails** (DECISIONS.md #012). The written brief's "RED TEAM OPS" wording is superseded; `docs/OSINT_Hotel_Scrollytelling_Brief.md` itself is left unedited as the historical/as-authored record, but every other spec document and all future asset generation use "HACK METH," matching the Asset Register (`C005`, `EN002`) and existing concept art. The sign still names/teases the next module's destination (IW/HAK/15.4) and is never entered in this build — only the label text changed.

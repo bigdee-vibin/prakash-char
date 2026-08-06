@@ -51,3 +51,37 @@ source segment (3) as the theHarvester/Sherlock/SpiderFoot demo it
 already precedes in the deck; thematically continuous (AI-assisted
 correlation/enrichment tooling feeds directly into the tool-chain
 demo the room hands off to).
+
+015 Easter Egg Wall assets (Scene 1 peripheral monitors: Python,
+Networking, PowerShell, Bash) are registered as EE001-EE004,
+category "Cold Open," Medium priority (atmospheric, non-blocking per
+FR-23 — distinct from the High-priority core scene/room assets).
+Source = HTML/CSS: implemented as CSS-animated monospace text scroll,
+not video or generated imagery, to keep the offline bundle light
+(Architecture.md C-12).
+
+016 Minimum hardware/runtime baseline for NFR-4/NFR-5: a training-room
+laptop with a dual-core ~2.0GHz+ CPU, 8GB RAM, integrated graphics,
+1280x800 minimum display, running an evergreen browser (Chrome/
+Firefox/Edge/Safari, last 2 major versions) on Windows 10/11 or
+equivalent. This is the baseline the 5s load-to-interactive and 60fps
+scroll targets (NFR-4) are measured against.
+
+017 Release artifact size budget confirmed at ≤150MB total
+(Architecture.md §8's proposed figure), covering ~33 registered
+visual assets (.webp) plus 2 ambient audio loops (.ogg).
+
+018 Ambient audio (rain.ogg, ops.ogg) is REQUIRED to ship in the
+release (stays High priority in the Asset Register) but its runtime
+FAILURE MODE remains non-blocking per NFR-6 — if autoplay is blocked
+or a device has no audio output, the experience must still be fully
+usable. "Required to exist," not "required to play," resolves the
+ambiguity between the Asset Register's High priority and NFR-6's
+graceful-degradation requirement.
+
+019 Cold Open / Operations Centre split confirmed as interpreted in
+Scene_Bible.md §2.1: "Cold Open" is a new, minimal title/splash beat
+(asset A001, Mission Splash) and "Operations Centre" carries the
+brief's original dark-ops-room/silhouette description (asset B001).
+This resolves the two-beats-vs-one-row discrepancy between the frozen
+scene order and the brief/Asset Register.
