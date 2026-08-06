@@ -38,12 +38,12 @@
 - [x] 22/22 placed in `assets/images/*.webp`
 - [x] Remaining 13 Asset Register rows (F002, SG002, FC002, EX001, EX002, DD001, UI001-UI003, EE001-EE004) confirmed as HTML/SVG/CSS build-time components, not image-generated — correctly deferred to Milestone 3
 
-### Backlog carried forward (4 items, not blocking Milestone 3 start — needs your call, not auto-resolved)
-- [ ] **DB001 (Mission Debrief):** "Next Destination" panel reads both "HACK METH" and "RED TEAM OPS AWAITS" in the same image — self-contradicting, latter violates DECISIONS.md #012. Also bakes in "YES / NOT YET" buttons as static art — need real HTML controls at build time.
-- [ ] **GD001 (Google Dorking):** bakes in a fully simulated dork query + 10 fake result URLs.
-- [ ] **D003 (Mission Board):** bakes in all 22 concept-art keys as fully unlocked/labeled, including "MISSION DEBRIEF" and "CHECK-OUT" as hub entries — violates #011 and the Scene Bible.
-- [ ] **SG001 (SignalGate) / FC001 (Fiery Cross Reef):** bake in fabricated specifics not in the source deck (dramatized "targets confirmed / time to execute" chat text; an invented date/coordinates) — Creative Bible §4 fidelity/sensitivity concern, deliberately left for human judgment rather than auto-resolved.
-- [ ] **TC001 / ST001 / GP001 / GD001 (all 4 terminal rooms):** bake in full simulated tool output — violates #007/SRS FR-18's explicit "no simulated tool output" rule.
+### Backlog — regeneration requested 2026-08-06 (DECISIONS.md #026), waiting on returned images
+Corrected prompts for all 8 sent as `prompts/regenerate_8_flagged.md` (zipped, handed to user). Once returned: convert to `.webp`, place in `assets/images/`, update Asset_Register + prompts/assets.json, re-verify in `index.html`.
+- [ ] **D003 (Mission Board)** — reprompted with zero baked-in labels (all labeling/lock-state stays in the runtime overlay, which already renders correctly)
+- [ ] **DB001 (Mission Debrief)** — reprompted for a single "HACK METH" destination, no baked-in buttons
+- [ ] **SG001 (SignalGate) / FC001 (Fiery Cross Reef)** — reprompted to drop fabricated dramatized content/invented specifics
+- [ ] **GD001 / TC001 / ST001 / GP001 (all 4 terminal rooms)** — reprompted for idle/blank screens, no simulated tool output
 
 ## M3 — HTML engine build (first working run-through — 2026-08-06)
 - [x] `index.html` built as a single self-contained file (Decision 002) — scroll engine (C-2), camera transitions (C-3, simplified), Mission Board hub (C-4/C-4a/C-4b), narrative rooms (C-5), terminal rooms + Pause-for-Demo (C-6/C-6a), case study card accent (C-7), check-out controller (C-8), back-to-reception (C-9), watermark (C-10), audio controller (C-11)

@@ -199,3 +199,17 @@ decision (tracked in TODO.md):
 EN002 was re-sent 2026-08-06 and still rendered "RED TEAM OPS" instead
 of "HACK METH" -- moved to images/_rejected/ again, still needs
 regeneration with corrected signage text.
+
+026 Regeneration requested 2026-08-06 for all 8 images behind the 4
+remaining flagged backlog items: D003 (Mission Board -- now prompted
+with zero baked-in labels, all label/lock-state moved fully to the
+runtime overlay), DB001 (Mission Debrief -- corrected to a single
+"HACK METH" destination, no baked-in buttons), SG001/FC001 (SignalGate/
+Fiery Cross Reef -- prompted to remove fabricated dramatized chat
+content and invented date/coordinates, per Creative Bible Sec 4),
+GD001/TC001/ST001/GP001 (all 4 terminal rooms -- prompted for idle/
+blank screens instead of simulated tool output, per #007/SRS FR-18).
+Corrected prompts handed to the user as prompts/regenerate_8_flagged.md
+(zipped). Once regenerated images are returned, they replace the
+current assets/images/*.webp files and the index.html run-through is
+re-verified.
